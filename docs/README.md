@@ -72,6 +72,9 @@ The use of the State Pattern in the current design allows the following benefits
 
 > This section should describe 3 to 5 different code smells that you have identified in your current implementation.
 
+- Perharps, the Menu model is not very optimized. The isSelected(i) and isExitSelected and isStartSelected are very co-dependent. (TO BE REVIEWED)
+
+
 ### TESTING
 
 - Screenshot of coverage report.
