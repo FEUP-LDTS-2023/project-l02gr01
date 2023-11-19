@@ -1,4 +1,4 @@
-package gui;
+package com.l02gr01.escape.gui;
 
 import java.io.IOException;
 

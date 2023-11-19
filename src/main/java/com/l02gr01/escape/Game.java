@@ -1,6 +1,6 @@
 package com.l02gr01.escape;
 
-import gui.LanternaGUI;
+import com.l02gr01.escape.gui.LanternaGUI;
 
 import java.awt.*;
 import java.io.IOException;
@@ -13,7 +13,6 @@ public class Game {
         // Add singleton logic
         this.gui = new LanternaGUI(20, 20);
 
-
     }
 
     public static void main(String[] args) throws IOException, FontFormatException, URISyntaxException {
@@ -21,6 +20,7 @@ public class Game {
     }
     private void start() throws IOException {
         // start the gui
+
     }
 
 }
