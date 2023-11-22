@@ -5,6 +5,7 @@ import com.l02gr01.escape.gui.GUI;
 import com.l02gr01.escape.model.Level;
 import com.l02gr01.escape.model.Position;
 import com.l02gr01.escape.model.elements.Key;
+import com.l02gr01.escape.model.elements.enemies.Enemy;
 
 public class PlayerController extends GameController {
     public PlayerController(Level Level) {
@@ -33,6 +34,10 @@ public class PlayerController extends GameController {
             Key key = getModel().getKey(position);
             if (key != null) {
                 key.setPickedUp(true);
+            }
+            Enemy enemy = getModel().getEnemy(position);
+            if (enemy != null) {
+                getModel().getPlayer().changeHealth(-1 * enemy.getDamage());
             }
         }
     }

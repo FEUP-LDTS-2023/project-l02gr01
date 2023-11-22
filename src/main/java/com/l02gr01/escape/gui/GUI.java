@@ -1,6 +1,7 @@
 package com.l02gr01.escape.gui;
 
 import com.l02gr01.escape.model.Position;
+import com.l02gr01.escape.model.elements.enemies.Enemy;
 import java.io.IOException;
 
 public interface GUI {
@@ -20,6 +21,8 @@ public interface GUI {
     void drawExit(Position position, boolean locked);
 
     void drawKey(Position position);
+
+    void drawEnemy(Enemy enemy);
 
     enum ACTION {UP, RIGHT, DOWN, LEFT, NONE, QUIT, SELECT}
 }

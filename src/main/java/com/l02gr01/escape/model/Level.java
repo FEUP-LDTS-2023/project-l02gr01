@@ -4,6 +4,7 @@ import com.l02gr01.escape.model.elements.Exit;
 import com.l02gr01.escape.model.elements.Key;
 import com.l02gr01.escape.model.elements.Player;
 import com.l02gr01.escape.model.elements.Wall;
+import com.l02gr01.escape.model.elements.enemies.Enemy;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +16,9 @@ public class Level {
   private List<Wall> walls = new ArrayList<>();
   private List<Key> keys = new ArrayList<>();
   private Exit exit = new Exit(5,0);
+
+  private List<Enemy> enemies = new ArrayList();
+
   public Level(int width, int height) {
     this.width = width;
     this.height = height;
@@ -91,5 +95,20 @@ public class Level {
       }
     }
     return remainingKeys;
+  }
+
+  public List<Enemy> getEnemies() {
+    return enemies;
+  }
+
+  public void setEnemies(List<Enemy> enemies) {
+    this.enemies = enemies;
+  }
+
+  public Enemy getEnemy(Position position) {
+    for (Enemy enemy : enemies)
+      if (enemy.getPosition().equals(position))
+        return enemy;
+    return null;
   }
 }

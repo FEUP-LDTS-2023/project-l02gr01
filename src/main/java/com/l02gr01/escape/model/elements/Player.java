@@ -11,4 +11,8 @@ public class Player extends Element {
     public int getHealth() {
         return health;
     }
+
+    public void changeHealth(int change) {
+        health += change;
+    }
 }

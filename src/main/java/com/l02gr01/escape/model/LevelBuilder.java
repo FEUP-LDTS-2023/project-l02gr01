@@ -4,6 +4,8 @@ import com.l02gr01.escape.model.elements.Exit;
 import com.l02gr01.escape.model.elements.Key;
 import com.l02gr01.escape.model.elements.Player;
 import com.l02gr01.escape.model.elements.Wall;
+import com.l02gr01.escape.model.elements.enemies.Enemy;
+import com.l02gr01.escape.model.elements.enemies.Troll;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -35,6 +37,7 @@ public class LevelBuilder {
     level.setWalls(createWalls());
     level.setExit(createExit());
     level.setKeys(createKeys());
+    level.setEnemies(createEnemies());
 
     return level;
   }
@@ -93,5 +96,15 @@ public class LevelBuilder {
         if (line.charAt(x) == 'P') return new Player(x, y);
     }
     return null;
+  }
+
+  private List<Enemy> createEnemies() {
+    List<Enemy> enemies = new ArrayList<>();
+    for (int y = 0; y < lines.size(); y++) {
+      String line = lines.get(y);
+      for (int x = 0; x < line.length(); x++)
+        if (line.charAt(x) == 'T') enemies.add(new Troll(x, y));
+    }
+    return enemies;
   }
 }

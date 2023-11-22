@@ -12,6 +12,7 @@ import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
 
 import com.l02gr01.escape.model.Position;
+import com.l02gr01.escape.model.elements.enemies.Enemy;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -127,6 +128,11 @@ public class LanternaGUI implements GUI{
     @Override
     public void drawKey(Position position) {
         drawCharacter(position.getX(), position.getY(), 'K', "#ffe100");
+    }
+
+    @Override
+    public void drawEnemy(Enemy enemy) {
+        drawCharacter(enemy.getPosition().getX(), enemy.getPosition().getY(), enemy.getSymbol(), enemy.getColor());
     }
 
     @Override

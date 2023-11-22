@@ -11,11 +11,14 @@ import java.io.IOException;
 public class LevelController extends GameController {
   private final PlayerController playerController;
   private final ExitController exitController;
+  
+  private final EnemyController enemyController;
 
   public LevelController(Level level) {
     super(level);
     this.playerController = new PlayerController(level);
     this.exitController = new ExitController(level);
+    this.enemyController = new EnemyController(level);
   }
 
   @Override
@@ -27,6 +30,7 @@ public class LevelController extends GameController {
     } else {
       playerController.step(game, action, time);
       exitController.step(game, action, time);
+      enemyController.step(game, action, time);
     }
   }
 }
