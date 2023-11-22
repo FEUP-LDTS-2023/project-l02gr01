@@ -1,0 +1,20 @@
+
+    INSTRUCTIONS
+
+   GAME OBJECTIVE:
+
+    You're stuck
+  inside a dungeon.
+  Pick all the keys
+    to run away!
+    Be careful,
+ you're not alone...
+
+
+Up Arr --> Go upward
+Left Arr --> Go left
+Right Arr-->Go right
+Down Arr --> Go down
+
+
+     Press Enter
