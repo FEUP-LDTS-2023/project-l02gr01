@@ -7,6 +7,10 @@ public class MenuState extends State<Menu> {
         super(model);
     }
 
+    public MenuState(String a, Menu model) {
+        super(model);
+    }
+
     // TBContinued
 
 }
