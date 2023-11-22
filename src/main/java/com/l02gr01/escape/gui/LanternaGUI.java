@@ -124,4 +124,18 @@ public class LanternaGUI implements GUI{
         drawCharacter(position.getX(), position.getY(), '#', "#3333FF");
     }
 
+    @Override
+    public void drawKey(Position position) {
+        drawCharacter(position.getX(), position.getY(), 'K', "#ffe100");
+    }
+
+    @Override
+    public void drawExit(Position position, boolean isOpen) {
+        String exitColor = "#636361";
+        if (isOpen) {
+            exitColor = "#1bf207";
+        }
+        drawCharacter(position.getX(), position.getY(), 'E', exitColor);
+    }
+
 }

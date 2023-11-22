@@ -7,4 +7,8 @@ public class Player extends Element {
         super(x, y);
         this.health = 100;
     }
+
+    public int getHealth() {
+        return health;
+    }
 }

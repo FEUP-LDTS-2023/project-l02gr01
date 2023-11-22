@@ -16,5 +16,10 @@ public interface GUI {
 
     void drawText(Position position, String text, String color);
     void drawWall(Position position);
+
+    void drawExit(Position position, boolean locked);
+
+    void drawKey(Position position);
+
     enum ACTION {UP, RIGHT, DOWN, LEFT, NONE, QUIT, SELECT}
 }

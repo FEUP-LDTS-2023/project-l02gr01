@@ -1,5 +1,7 @@
 package com.l02gr01.escape.model;
 
+import com.l02gr01.escape.model.elements.Exit;
+import com.l02gr01.escape.model.elements.Key;
 import com.l02gr01.escape.model.elements.Player;
 import com.l02gr01.escape.model.elements.Wall;
 import java.io.BufferedReader;
@@ -31,8 +33,34 @@ public class LevelBuilder {
 
     level.setPlayer(createPlayer());
     level.setWalls(createWalls());
+    level.setExit(createExit());
+    level.setKeys(createKeys());
 
     return level;
+  }
+
+  private List<Key> createKeys() {
+    List<Key> keys = new ArrayList<>();
+
+    for (int y = 0; y < lines.size(); y++) {
+      String line = lines.get(y);
+      for (int x = 0; x < line.length(); x++)
+        if (line.charAt(x) == 'K') keys.add(new Key(x, y));
+    }
+
+    return keys;
+  }
+
+  private Exit createExit() {
+    for (int y = 0; y < lines.size(); y++) {
+      String line = lines.get(y);
+      for (int x = 0; x < line.length(); x++) {
+        if (line.charAt(x) == 'E') {
+          return new Exit(x, y);
+        }
+      }
+    }
+    return new Exit(0, 1);
   }
 
   public int getWidth() {
@@ -62,7 +90,7 @@ public class LevelBuilder {
     for (int y = 0; y < lines.size(); y++) {
       String line = lines.get(y);
       for (int x = 0; x < line.length(); x++)
-        if (line.charAt(x) == 'H') return new Player(x, y);
+        if (line.charAt(x) == 'P') return new Player(x, y);
     }
     return null;
   }
