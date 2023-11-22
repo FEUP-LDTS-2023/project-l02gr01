@@ -24,8 +24,29 @@ public class Game {
         new Game().start();
     }
     private void start() throws IOException {
-        // start the gui
+        int FPS = 10;
+        int frameTime = 1000 / FPS;
 
+        while (this.state != null) {
+            long startTime = System.currentTimeMillis();
+
+            state.step(this, gui, startTime);
+
+            long elapsedTime = System.currentTimeMillis() - startTime;
+            long sleepTime = frameTime - elapsedTime;
+
+            try {
+                if (sleepTime > 0) Thread.sleep(sleepTime);
+            } catch (InterruptedException e) {
+            }
+        }
+
+        gui.close();
+
+    }
+
+    public void setState(State state) {
+        this.state = state;
     }
 
 }
