@@ -13,8 +13,8 @@ import java.util.Map.Entry;
 public class PlayerController extends GameController {
     final long powerExpiration = 5000;
 
-    public PlayerController(Level Level) {
-        super(Level);
+    public PlayerController(Level level) {
+        super(level);
     }
 
     public void movePlayerLeft(long time) {

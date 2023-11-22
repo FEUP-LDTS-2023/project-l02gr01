@@ -11,8 +11,8 @@ import java.io.IOException;
 public class EnemyController extends GameController {
     private long lastMovement;
 
-    public EnemyController(Level Level) {
-        super(Level);
+    public EnemyController(Level level) {
+        super(level);
 
         this.lastMovement = 0;
     }
