@@ -6,6 +6,7 @@ import com.l02gr01.escape.gui.GUI;
 
 import com.l02gr01.escape.viewer.Viewer;
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 public abstract class State<T> {
 
@@ -27,7 +28,7 @@ public abstract class State<T> {
         return model;
     }
 
-    public void step(Game game, GUI gui, long time) throws IOException {
+    public void step(Game game, GUI gui, long time) throws IOException, URISyntaxException {
         GUI.ACTION action = gui.getNextAction();
         controller.step(game, action, time);
         viewer.draw(gui);

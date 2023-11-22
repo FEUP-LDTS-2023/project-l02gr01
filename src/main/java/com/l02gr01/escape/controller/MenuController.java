@@ -6,6 +6,7 @@ import com.l02gr01.escape.model.LevelBuilder;
 import com.l02gr01.escape.model.Menu;
 import com.l02gr01.escape.states.GameState;
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 public class MenuController extends Controller<Menu> {
   public MenuController(Menu menu) {
@@ -13,7 +14,7 @@ public class MenuController extends Controller<Menu> {
   }
 
   @Override
-  public void step(Game game, GUI.ACTION action, long time) throws IOException {
+  public void step(Game game, GUI.ACTION action, long time) throws IOException, URISyntaxException {
     switch (action) {
       case UP:
         getModel().previousEntry();
@@ -24,6 +25,9 @@ public class MenuController extends Controller<Menu> {
       case SELECT:
         if (getModel().isSelectedExit()) game.setState(null);
         if (getModel().isSelectedStart()) game.setState(new GameState(new LevelBuilder(1)));
+        break;
+      default:
+        break;
     }
   }
 }
