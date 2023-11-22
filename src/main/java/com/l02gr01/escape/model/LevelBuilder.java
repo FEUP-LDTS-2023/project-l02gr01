@@ -6,6 +6,8 @@ import com.l02gr01.escape.model.elements.Player;
 import com.l02gr01.escape.model.elements.Wall;
 import com.l02gr01.escape.model.elements.enemies.Enemy;
 import com.l02gr01.escape.model.elements.enemies.Troll;
+import com.l02gr01.escape.model.elements.powers.Power;
+import com.l02gr01.escape.model.elements.powers.Shield;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -38,8 +40,19 @@ public class LevelBuilder {
     level.setExit(createExit());
     level.setKeys(createKeys());
     level.setEnemies(createEnemies());
+    level.setPowers(createPowers());
 
     return level;
+  }
+
+  private List<Power> createPowers() {
+    List<Power> powers = new ArrayList<>();
+    for (int y = 0; y < lines.size(); y++) {
+      String line = lines.get(y);
+      for (int x = 0; x < line.length(); x++)
+        if (line.charAt(x) == 'S') powers.add(new Shield(x, y));
+    }
+    return powers;
   }
 
   private List<Key> createKeys() {

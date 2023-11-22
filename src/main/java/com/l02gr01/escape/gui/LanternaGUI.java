@@ -7,13 +7,17 @@ import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
-import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
+import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
-
 import com.l02gr01.escape.model.Position;
+import com.l02gr01.escape.model.elements.Player;
 import com.l02gr01.escape.model.elements.enemies.Enemy;
-import java.awt.*;
+import com.l02gr01.escape.model.elements.powers.Power;
+import com.l02gr01.escape.model.elements.powers.Power.PowerType;
+import java.awt.Font;
+import java.awt.FontFormatException;
+import java.awt.GraphicsEnvironment;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -116,8 +120,12 @@ public class LanternaGUI implements GUI{
     }
 
     @Override
-    public void drawPlayer(Position position) {
-        drawCharacter(position.getX(), position.getY(), 'P', "#FFD700");
+    public void drawPlayer(Player player) {
+        String playerColor = "#FFD700";
+        if (player.getActivePowers().containsKey(PowerType.SHIELD)) {
+            playerColor = "#21fbff";
+        }
+        drawCharacter(player.getPosition().getX(), player.getPosition().getY(), 'P', playerColor);
     }
 
     @Override
@@ -133,6 +141,11 @@ public class LanternaGUI implements GUI{
     @Override
     public void drawEnemy(Enemy enemy) {
         drawCharacter(enemy.getPosition().getX(), enemy.getPosition().getY(), enemy.getSymbol(), enemy.getColor());
+    }
+
+    @Override
+    public void drawPower(Power power) {
+        drawCharacter(power.getPosition().getX(), power.getPosition().getY(), power.getSymbol(), power.getColor());
     }
 
     @Override

@@ -14,6 +14,7 @@ public class GameViewer extends Viewer<Level> {
 
   @Override
   public void drawElements(GUI gui) {
+    drawElements(gui, getModel().getPowers(), new PowerViewer());
     drawElements(gui, getModel().getWalls(), new WallViewer());
     drawElements(gui, getModel().getKeys(), new KeyViewer());
     drawElement(gui, getModel().getExit(), new ExitViewer());
