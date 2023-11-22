@@ -101,17 +101,17 @@ public class LanternaGUI implements GUI{
 
     @Override
     public void clear() {
-
+        screen.clear();
     }
 
     @Override
     public void refresh() throws IOException {
-
+        screen.refresh();
     }
 
     @Override
     public void close() throws IOException {
-
+        screen.close();
     }
 
     @Override
