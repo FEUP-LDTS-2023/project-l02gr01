@@ -11,6 +11,7 @@ import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
 import com.l02gr01.escape.model.Position;
+import com.l02gr01.escape.model.elements.Key;
 import com.l02gr01.escape.model.elements.Player;
 import com.l02gr01.escape.model.elements.enemies.Enemy;
 import com.l02gr01.escape.model.elements.powers.Power;
@@ -87,6 +88,8 @@ public class LanternaGUI implements GUI{
         if (keyStroke.getKeyType() == KeyType.ArrowLeft) return ACTION.LEFT;
 
         if (keyStroke.getKeyType() == KeyType.Enter) return ACTION.SELECT;
+        if (keyStroke.getKeyType() == KeyType.Tab) return ACTION.TAB;
+
 
         return ACTION.NONE;
     }
@@ -146,6 +149,12 @@ public class LanternaGUI implements GUI{
     @Override
     public void drawPower(Power power) {
         drawCharacter(power.getPosition().getX(), power.getPosition().getY(), power.getSymbol(), power.getColor());
+    }
+
+    @Override
+    public void drawBullet(Position position){
+        String exitColor = "#636361";
+        drawCharacter(position.getX(), position.getY(), '*', exitColor);
     }
 
     @Override

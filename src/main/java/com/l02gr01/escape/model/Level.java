@@ -1,9 +1,6 @@
 package com.l02gr01.escape.model;
 
-import com.l02gr01.escape.model.elements.Exit;
-import com.l02gr01.escape.model.elements.Key;
-import com.l02gr01.escape.model.elements.Player;
-import com.l02gr01.escape.model.elements.Wall;
+import com.l02gr01.escape.model.elements.*;
 import com.l02gr01.escape.model.elements.enemies.Enemy;
 import com.l02gr01.escape.model.elements.powers.Power;
 import java.util.ArrayList;
@@ -22,6 +19,9 @@ public class Level {
   private List<Power> powers = new ArrayList<>();
 
   private List<Enemy> enemies = new ArrayList();
+
+  private List<Bullet> bullets = new ArrayList<Bullet>();
+
 
   public Level(int width, int height) {
     this.width = width;
@@ -141,5 +141,19 @@ public class Level {
 
   public void removePower(Power power) {
     powers.remove(power);
+  }
+
+
+  public void addBullet(Bullet b){
+    bullets.add(b);
+  }
+  public List<Bullet> getBullets(){
+    return bullets;
+  }
+
+  public void shoot(){
+    if(player.isBulletAvailable()){
+      bullets.add(new Bullet(player.getPosition().getX(), player.getPosition().getY(), new Position(0,1)));
+    }
   }
 }

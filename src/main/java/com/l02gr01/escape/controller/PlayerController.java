@@ -4,6 +4,7 @@ import com.l02gr01.escape.Game;
 import com.l02gr01.escape.gui.GUI;
 import com.l02gr01.escape.model.Level;
 import com.l02gr01.escape.model.Position;
+import com.l02gr01.escape.model.elements.Bullet;
 import com.l02gr01.escape.model.elements.Key;
 import com.l02gr01.escape.model.elements.enemies.Enemy;
 import com.l02gr01.escape.model.elements.powers.Power;
@@ -52,13 +53,17 @@ public class PlayerController extends GameController {
         }
     }
 
+    public void shoot(){
+        getModel().shoot();
+    }
+
     @Override
     public void step(Game game, GUI.ACTION action, long time) {
         if (action == GUI.ACTION.UP) movePlayerUp(time);
         if (action == GUI.ACTION.RIGHT) movePlayerRight(time);
         if (action == GUI.ACTION.DOWN) movePlayerDown(time);
         if (action == GUI.ACTION.LEFT) movePlayerLeft(time);
-
+        if (action == GUI.ACTION.TAB) shoot();
         checkPowers(time);
     }
 
@@ -69,4 +74,5 @@ public class PlayerController extends GameController {
             }
         }
     }
+
 }

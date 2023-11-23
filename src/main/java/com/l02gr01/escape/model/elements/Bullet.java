@@ -10,6 +10,7 @@ public class Bullet extends Element{
         this.direction = direction;
     }
 
-
-
+    public Position getDirection() {
+        return direction;
+    }
 }
