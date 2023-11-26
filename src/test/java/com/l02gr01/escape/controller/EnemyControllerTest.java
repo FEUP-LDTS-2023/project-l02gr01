@@ -1,0 +1,66 @@
+package com.l02gr01.escape.controller;
+
+import com.l02gr01.escape.Game;
+import com.l02gr01.escape.gui.GUI;
+import com.l02gr01.escape.model.Level;
+import com.l02gr01.escape.model.Position;
+import com.l02gr01.escape.model.elements.Exit;
+import com.l02gr01.escape.model.elements.Player;
+import com.l02gr01.escape.model.elements.Wall;
+import com.l02gr01.escape.model.elements.enemies.Enemy;
+import com.l02gr01.escape.model.elements.enemies.MovingStrategy.RandomMovingStrategy;
+import com.l02gr01.escape.model.elements.enemies.Troll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+
+import java.io.IOException;
+import java.util.Arrays;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class EnemyControllerTest {
+    private Level level;
+    private Player player;
+    private EnemyController enemyController;
+    private Game game;
+
+    @BeforeEach
+    void setUp() {
+        level = new Level(15,15);
+        player = new Player(5,5);
+        enemyController = new EnemyController(level);
+        level.setPlayer(player);
+        game = Mockito.mock(Game.class);
+    }
+
+    @Test
+    void testMoveEnemy() throws IOException {
+        Enemy enemy = Mockito.mock(Enemy.class);
+        Mockito.when(enemy.getStrategy()).thenReturn(new RandomMovingStrategy());
+        Mockito.when(enemy.getPosition()).thenReturn(new Position(1, 1));
+
+        level.setEnemies(Arrays.asList(enemy));
+
+        enemyController.step(game, GUI.ACTION.NONE, 1000);
+
+        Mockito.verify(enemy, Mockito.times(1)).getStrategy();
+        Mockito.verify(enemy, Mockito.times(2)).getPosition();
+        Mockito.verify(enemy, Mockito.times(1)).setPosition(Mockito.argThat(position -> position.getX() != 1 || position.getY() != 1));
+    }
+
+    @Test
+    void testOnlyMonsterMove() throws IOException {
+        Troll troll = new Troll(2,2);
+        level.setEnemies(Arrays.asList(troll));
+        level.setWalls(Arrays.asList(new Wall(3,2), new Wall(2,3), new Wall(2,1)));
+
+        long time = 0;
+        while (troll.getPosition().equals(new Position(2,2))) {
+            enemyController.step(game, GUI.ACTION.NONE, time);
+            time += 1000;
+        }
+        assertEquals(troll.getPosition(), new Position(1,2));
+    }
+}

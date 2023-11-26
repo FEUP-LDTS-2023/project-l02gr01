@@ -16,21 +16,18 @@ import java.util.Arrays;
 import static org.junit.jupiter.api.Assertions.*;
 
 class PlayerControllerTest {
+
     private Level level;
     private Player player;
     private PlayerController playerController;
+
     @BeforeEach
     void setUp() {
         level = new Level(15,15);
         player = new Player(5,5);
         playerController = new PlayerController(level);
-
         level.setPlayer(player);
-        level.setEnemies(Arrays.asList(new Troll(6,5)));
-        level.setExit(new Exit(1,1));
-        level.setWalls(Arrays.asList(new Wall(5,6)));
-        //level.setPowers(Arrays.asList(new Shield(4,5)));
-        //level.setKeys(Arrays.asList(new Key(4,5)));
+        level.setExit(new Exit(0,0));
     }
 
     @Test
@@ -38,8 +35,28 @@ class PlayerControllerTest {
         playerController.movePlayerUp(100);
         assertEquals(player.getPosition(), new Position(5, 4));
     }
+
+    @Test
+    void testMoveHeroDown() {
+        playerController.movePlayerDown(100);
+        assertEquals(player.getPosition(), new Position(5, 6));
+    }
+
+    @Test
+    void testMoveHeroLeft() {
+        playerController.movePlayerLeft(100);
+        assertEquals(player.getPosition(), new Position(4, 5));
+    }
+
+    @Test
+    void testMoveHeroRight() {
+        playerController.movePlayerRight(100);
+        assertEquals(player.getPosition(), new Position(6, 5));
+    }
+
     @Test
     void testMoveHeroWithWall() {
+        level.setWalls(Arrays.asList(new Wall(5,6)));
         playerController.movePlayerDown(100);
         assertEquals(player.getPosition(), new Position(5, 5));
     }
@@ -53,8 +70,20 @@ class PlayerControllerTest {
 
     @Test
     void testDamage() {
+        level.setEnemies(Arrays.asList(new Troll(6,5)));
         playerController.movePlayerRight(100);
         assertEquals(player.getHealth(), 90);
     }
 
+    @Test
+    void testShield() {
+        level.setEnemies(Arrays.asList(new Troll(6,5)));
+        player.addPower(new Shield(4,5), 100);
+        playerController.movePlayerLeft(100);
+        assertEquals(1, player.getActivePowers().size());
+        playerController.movePlayerRight(100);
+        playerController.movePlayerRight(100);
+        assertEquals(player.getPosition(), level.getEnemies().get(0).getPosition());
+        assertEquals(100, player.getHealth());
+    }
 }

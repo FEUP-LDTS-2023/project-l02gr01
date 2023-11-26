@@ -2,15 +2,11 @@ package com.l02gr01.escape.model;
 
 import com.l02gr01.escape.model.elements.Exit;
 import com.l02gr01.escape.model.elements.Key;
-import com.l02gr01.escape.model.elements.Player;
 import com.l02gr01.escape.model.elements.Wall;
 import com.l02gr01.escape.model.elements.enemies.Troll;
-import com.l02gr01.escape.model.elements.powers.Power;
-import com.l02gr01.escape.model.elements.powers.Shield;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -24,7 +20,7 @@ class LevelTest {
     }
 
     @Test
-    public void testGRemainingKeys() {
+    public void testRemainingKeys() {
         Key key1 = new Key(1, 1);
         Key key2 = new Key(5, 10);
 
