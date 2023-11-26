@@ -121,54 +121,44 @@ from the user input and processor speed.
 
 File: Game.java
 
-*Consequences*
+**Consequences**
 
 This implementation guarantees smooth and equal functioning throughout all devices
 that may use our game.
 
-- 
+---
 
-
-
-------
-
-#### THE JUMP ACTION OF THE KANGAROOBOY SHOULD BEHAVE DIFFERENTLY DEPENDING ON ITS STATE
+### Having different moving strategies for enemies
 
 **Problem in Context**
 
-There was a lot of scattered conditional logic when deciding how the KangarooBoy should behave when jumping, as the jumps should be different depending on the items that came to his possession during the game (an helix will alow him to fly, driking a potion will allow him to jump double the height, etc.). This is a violation of the **Single Responsability Principle**. We could concentrate all the conditional logic in the same method to circumscribe the issue to that one method but the **Single Responsability Principle** would still be violated.
+We wanted to guarantee that while some enemies where easy to run away from, some would try to follow the user.
+For this, we used the Strategy Pattern.
 
-**The Pattern**
+**Implementation**
 
-We have applied the **State** pattern. This pattern allows you to represent different states with different subclasses. We can switch to a different state of the application by switching to another implementation (i.e., another subclass). This pattern allowed to address the identified problems because […].
-
-
-The following figure shows how the pattern’s roles were mapped to the application classes.
-
-![img](https://www.fe.up.pt/~arestivo/page/img/examples/lpoo/state.svg)
-
-These classes can be found in the following files:
-
-- [Character](https://web.fe.up.pt/~arestivo/page/courses/2021/lpoo/template/src/main/java/Character.java)
-- [JumpAbilityState](https://web.fe.up.pt/~arestivo/page/courses/2021/lpoo/template/src/main/java/JumpAbilityState.java)
-- [DoubleJumpState](https://web.fe.up.pt/~arestivo/page/courses/2021/lpoo/template/src/main/java/DoubleJumpState.java)
-- [HelicopterState](https://web.fe.up.pt/~arestivo/page/courses/2021/lpoo/template/src/main/java/HelicopterState.java)
-- [IncreasedGravityState](https://web.fe.up.pt/~arestivo/page/courses/2021/lpoo/template/src/main/java/IncreasedGravityState.java)
+This feature will be implemented as depicted in the UML. There will exist a MovingStrategy abstract class that will
+have a method moveEnemy. Then, some method strategies will inherit this class. 
+The EnemyController will have a MovingStrategy associated.
 
 **Consequences**
 
-The use of the State Pattern in the current design allows the following benefits:
 
-- The several states that represent the character’s hability to jump become explicit in the code, instead of relying on a series of flags.
-- We don’t need to have a long set of conditional if or switch statements associated with the various states; instead, polimorphism is used to activate the right behavior.
-- There are now more classes and instances to manage, but still in a reasonable number.
+--- 
+
+In the rest of the project, we tried to follow the SOLID principles, making use of polimorphism and other good practices.
+However, there are still some code smells.
+
+------
 
 #### KNOWN CODE SMELLS
 
 > This section should describe 3 to 5 different code smells that you have identified in your current implementation.
 
-- Large "Level" Class: The Game level class has grown too large and might benefit from decomposition. As an example, powers can be transferred to the Player, as denoted in the UML diagram.
+- Large "Level" Class: The Game level class has grown too large and might benefit from decomposition.
 - The powers and enemy classes are not following good practices of separation, having information about the view, when they should only have model information. 
+
+
 
 ### TESTING
 
@@ -186,9 +176,10 @@ TBD
 
 The initial UML structure was designed by Filipe Correia and transformed to a digital UML by Gonçalo Remelhe.
 
-Filipe Correia and Ricardo Morais developed the initial structure of the code. Gonçalo Remelhe developed the code related with Instructions.
+Filipe Correia and Ricardo Morais developed initial structure of the code and some initial functionalities. 
+Gonçalo Remelhe developed the code related with Instructions and tests.
 
-Gonçalo Remelhe and Ricardo Morais developed the tests. Filipe Correia overviewed the code design.
+Filipe Correia overviewed the code design.
 
 - Filipe Correia: %
 - Gonçalo Remelhe: %
