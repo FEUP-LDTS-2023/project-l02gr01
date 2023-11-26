@@ -15,7 +15,7 @@ public class ExitController extends GameController {
   @Override
   public void step(Game game, ACTION action, long time) throws IOException {
 
-    if(getModel().getRemainingKeys() == 0) {
+    if(getModel().getKeys().getRemainingKeys() == 0) {
       getModel().getExit().setOpen(true);
     }
   }

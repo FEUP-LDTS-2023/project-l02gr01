@@ -28,10 +28,10 @@ class LevelTest {
         Key key1 = new Key(1, 1);
         Key key2 = new Key(5, 10);
 
-        level.setKeys(Arrays.asList(key1, key2));
-        assertEquals(2, level.getRemainingKeys());
+        level.getKeys().setKeys(Arrays.asList(key1, key2));
+        assertEquals(2, level.getKeys().getRemainingKeys());
         key1.setPickedUp(true);
-        assertEquals(1, level.getRemainingKeys());
+        assertEquals(1, level.getKeys().getRemainingKeys());
     }
 
     @Test
