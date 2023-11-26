@@ -46,9 +46,9 @@ class PlayerControllerTest {
 
     @Test
     void testPickUpKey() {
-        level.setKeys(Arrays.asList(new Key(4,5)));
+        level.getKeys().setKeys(Arrays.asList(new Key(4,5)));
         playerController.movePlayerLeft(100);
-        assertTrue(level.getKeys().get(0).isPickedUp());
+        assertTrue(level.getKeys().getList().get(0).isPickedUp());
     }
 
     @Test

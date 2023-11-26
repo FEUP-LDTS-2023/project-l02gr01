@@ -1,9 +1,6 @@
 package com.l02gr01.escape.model;
 
-import com.l02gr01.escape.model.elements.Exit;
-import com.l02gr01.escape.model.elements.Key;
-import com.l02gr01.escape.model.elements.Player;
-import com.l02gr01.escape.model.elements.Wall;
+import com.l02gr01.escape.model.elements.*;
 import com.l02gr01.escape.model.elements.enemies.Enemy;
 import com.l02gr01.escape.model.elements.enemies.Troll;
 import com.l02gr01.escape.model.elements.powers.Power;
@@ -61,8 +58,8 @@ public class LevelBuilder {
     return powers;
   }
 
-  private List<Key> createKeys() {
-    List<Key> keys = new ArrayList<>();
+  private Keys createKeys() {
+    Keys keys = new Keys();
 
     for (int y = 0; y < lines.size(); y++) {
       String line = lines.get(y);

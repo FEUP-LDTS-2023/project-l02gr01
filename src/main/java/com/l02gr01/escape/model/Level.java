@@ -1,9 +1,6 @@
 package com.l02gr01.escape.model;
 
-import com.l02gr01.escape.model.elements.Exit;
-import com.l02gr01.escape.model.elements.Key;
-import com.l02gr01.escape.model.elements.Player;
-import com.l02gr01.escape.model.elements.Wall;
+import com.l02gr01.escape.model.elements.*;
 import com.l02gr01.escape.model.elements.enemies.Enemy;
 import com.l02gr01.escape.model.elements.powers.Power;
 import java.util.ArrayList;
@@ -16,8 +13,8 @@ public class Level {
 
   private Player player;
   private List<Wall> walls = new ArrayList<Wall>();
-  private List<Key> keys = new ArrayList<Key>();
-  private Exit exit;
+  private Keys keys = new Keys();
+  private Exit exit = new Exit(5,0);
 
   private List<Power> powers = new ArrayList<Power>();
 
@@ -61,11 +58,11 @@ public class Level {
     this.walls = walls;
   }
 
-  public List<Key> getKeys() {
+  public Keys getKeys() {
     return keys;
   }
 
-  public void setKeys(List<Key> keys) {
+  public void setKeys(Keys keys) {
     this.keys = keys;
   }
 
@@ -84,25 +81,6 @@ public class Level {
       }
     }
     return exit.isOpen() || !exit.getPosition().equals(position);
-  }
-
-  public Key getKey(Position position) {
-    for (Key key : keys) {
-      if (key.getPosition().equals(position)) {
-        return key;
-      }
-    }
-    return null;
-  }
-
-  public int getRemainingKeys() {
-    int remainingKeys = keys.size();
-    for (Key key : keys) {
-      if (key.isPickedUp()) {
-        remainingKeys--;
-      }
-    }
-    return remainingKeys;
   }
 
   public List<Enemy> getEnemies() {

@@ -36,7 +36,7 @@ public class PlayerController extends GameController {
     private void movePlayer(Position position, long time) {
         if (getModel().isEmpty(position)) {
             getModel().getPlayer().setPosition(position);
-            Key key = getModel().getKey(position);
+            Key key = getModel().getKeys().getKey(position);
             if (key != null) {
                 key.setPickedUp(true);
             }
