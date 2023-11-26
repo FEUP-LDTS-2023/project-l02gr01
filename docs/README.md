@@ -1,4 +1,4 @@
-## LDTS_02_G01 - Escape
+# LDTS_02_G01 - Escape
 
 > Include here one or two paragraphs explaining the main idea of the project, followed by a sentence identifying who the authors are.
 
@@ -7,7 +7,7 @@ In this game, your mission is to escape from the arena after grabbing all keys t
 
 This project was developed by *Filipe Correia* (*up202206776*@up.pt), *Gonçalo Remelhe* (*up*@up.pt) and *Ricardo Morais* for LDTS 2023⁄24.
 
-### IMPLEMENTED FEATURES
+## IMPLEMENTED FEATURES
 
 > This section should contain a list of implemented features and their descriptions. In the end of the section, include two or three screenshots that illustrate the most important features.
 - **Dynamic Arena**: The game arena changes in every level, offering new challenges.
@@ -20,7 +20,7 @@ Here are some screenshots of the game functionalities as of 26/11:
 
 
 
-### PLANNED FEATURES
+## PLANNED FEATURES
 
 > This section is similar to the previous one but should list the features that are not yet implemented. Instead of screenshots you should include GUI mock-ups for the planned features.
 
@@ -30,26 +30,32 @@ Here are some screenshots of the game functionalities as of 26/11:
 - Leaderboard: The leaderboard is the interface where players can find the scores of the last players and compare their scores 
 
 
-### DESIGN
+## DESIGN
 
 > This section should be organized in different subsections, each describing a different design problem that you had to solve during the project. Each subsection should be organized in four different parts:
+>- **Problem in Context.** The description of the design context and the concrete problem that motivated the instantiation of the pattern. Someone else other than the original developer should be able to read and understand all the motivations for the decisions made. When refering to the implementation before the pattern was applied, don’t forget to [link to the relevant lines of code](https://help.github.com/en/articles/creating-a-permanent-link-to-a-code-snippet) in the appropriate version.
+>- **The Pattern.** Identify the design pattern to be applied, why it was selected and how it is a good fit considering the existing design context and the problem at hand.
+>- **Implementation.** Show how the pattern roles, operations and associations were mapped to the concrete design classes. Illustrate it with a UML class diagram, and refer to the corresponding source code with links to the relevant lines (these should be [relative links](https://help.github.com/en/articles/about-readmes#relative-links-and-image-paths-in-readme-files). When doing this, always point to the latest version of the code.
+>- **Consequences.** Benefits and liabilities of the design after the pattern instantiation, eventually comparing these consequences with those of alternative solutions.
 
-- **Problem in Context.** The description of the design context and the concrete problem that motivated the instantiation of the pattern. Someone else other than the original developer should be able to read and understand all the motivations for the decisions made. When refering to the implementation before the pattern was applied, don’t forget to [link to the relevant lines of code](https://help.github.com/en/articles/creating-a-permanent-link-to-a-code-snippet) in the appropriate version.
-- **The Pattern.** Identify the design pattern to be applied, why it was selected and how it is a good fit considering the existing design context and the problem at hand.
-- **Implementation.** Show how the pattern roles, operations and associations were mapped to the concrete design classes. Illustrate it with a UML class diagram, and refer to the corresponding source code with links to the relevant lines (these should be [relative links](https://help.github.com/en/articles/about-readmes#relative-links-and-image-paths-in-readme-files). When doing this, always point to the latest version of the code.
-- **Consequences.** Benefits and liabilities of the design after the pattern instantiation, eventually comparing these consequences with those of alternative solutions.
 
-**Example of one of such subsections**:
+### UML
+
+The resulting UML for our game is as follows.
+
+![The UML of the Escape Game](ldtsUML.png)
+
 
 ---
 
-#### Model-View Controller
+### Model-View Controller
 
-In this project, we implemented the Model-View Controller
+In this project, we implemented the Model-View Controller, to allow separation of code related with the model, the viewer and the controls.
+
 
 ---
 
-#### Leaderboard History
+### Leaderboard History
 
 **Problem in Context**
 
@@ -82,7 +88,8 @@ anywhere in the code.
 **Consequences**
 
 Using these patterns, allows easy inclusion of new events on any part of the code and listing of the history saved.
-
+This also guarantees the efficiency of code, as we know that for each load of the game, it will only run once the load of data 
+from the memory file (at HistoryLoader.java).
 
 ---
 
