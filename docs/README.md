@@ -136,12 +136,12 @@ For this, we used the Strategy Pattern.
 
 This feature will be implemented as depicted in the UML. There will exist a MovingStrategy abstract class that will
 have a method moveEnemy. Then, some method strategies will inherit this class. 
-The EnemyController will have a MovingStrategy associated.
+The Enemy will have a MovingStrategy associated.
 
 **Consequences**
 
-This pattern allows for easy selection of the moving algorithm for the enemies, easy inclusion of new algorithms of
-movement for enemies and
+This pattern allows for easy selection of the moving algorithm for the enemies and easy inclusion of new algorithms of
+movement for enemies.
 
 --- 
 

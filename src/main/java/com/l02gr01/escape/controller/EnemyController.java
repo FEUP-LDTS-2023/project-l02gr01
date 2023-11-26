@@ -2,18 +2,16 @@ package com.l02gr01.escape.controller;
 
 
 import com.l02gr01.escape.Game;
-import com.l02gr01.escape.controller.MovingStrategy.MovingStrategy;
-import com.l02gr01.escape.controller.MovingStrategy.RandomMovingStrategy;
+import com.l02gr01.escape.model.elements.enemies.MovingStrategy.MovingStrategy;
+import com.l02gr01.escape.model.elements.enemies.MovingStrategy.RandomMovingStrategy;
 import com.l02gr01.escape.gui.GUI;
 import com.l02gr01.escape.model.Level;
-import com.l02gr01.escape.model.Position;
 import com.l02gr01.escape.model.elements.enemies.Enemy;
 import java.io.IOException;
 
 public class EnemyController extends GameController {
     private long lastMovement;
 
-    private MovingStrategy strategy = new RandomMovingStrategy();
 
     public EnemyController(Level level) {
         super(level);
@@ -30,7 +28,7 @@ public class EnemyController extends GameController {
     }
 
     private void moveEnemy(Enemy enemy) {
-        strategy.moveEnemy(enemy, getModel());
+        enemy.setPosition(enemy.getStrategy().moveEnemy(enemy.getPosition(),getModel())); // moves the enemy according to its moving strategy
         if (getModel().getPlayer().getPosition().equals(enemy.getPosition())) {
             getModel().getPlayer().changeHealth(-1 * enemy.getDamage());
         }

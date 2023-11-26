@@ -1,9 +1,9 @@
-package com.l02gr01.escape.controller.MovingStrategy;
+package com.l02gr01.escape.model.elements.enemies.MovingStrategy;
 
 import com.l02gr01.escape.model.Level;
 import com.l02gr01.escape.model.Position;
 import com.l02gr01.escape.model.elements.enemies.Enemy;
 
-public abstract class MovingStrategy {
-    public abstract void moveEnemy(Enemy enemy, Level level);
+public interface MovingStrategy {
+     Position moveEnemy(Position position, Level level);
 }

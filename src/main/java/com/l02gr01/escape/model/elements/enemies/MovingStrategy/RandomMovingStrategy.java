@@ -1,16 +1,16 @@
-package com.l02gr01.escape.controller.MovingStrategy;
+package com.l02gr01.escape.model.elements.enemies.MovingStrategy;
 
 import com.l02gr01.escape.model.Level;
 import com.l02gr01.escape.model.Position;
 import com.l02gr01.escape.model.elements.enemies.Enemy;
 
-public class RandomMovingStrategy extends MovingStrategy {
+public class RandomMovingStrategy implements MovingStrategy {
     @Override
-    public void moveEnemy(Enemy enemy, Level level) {
-        Position position;
+    public Position moveEnemy(Position position, Level level) {
+        Position finalpos;
         do {
-            position = enemy.getPosition().getRandomNeighbour();
-        }while (!level.isEmpty(position));
-        enemy.setPosition(position);
+            finalpos = position.getRandomNeighbour();
+        }while (!level.isEmpty(finalpos));
+        return finalpos;
     }
 }

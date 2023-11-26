@@ -9,10 +9,4 @@ public class Troll extends Enemy {
     super(x, y, 10, '&', "#116909");
   }
 
-
-  @Override
-  public Position nextMove() {
-    // For example, move right until a wall, then left and vice versa
-    return null;
-  }
 }
