@@ -8,8 +8,8 @@ import com.l02gr01.escape.viewer.Viewer;
 import java.util.List;
 
 public class GameViewer extends Viewer<Level> {
-  public GameViewer(Level Level) {
-    super(Level);
+  public GameViewer(Level level) {
+    super(level);
   }
 
   @Override
@@ -20,6 +20,7 @@ public class GameViewer extends Viewer<Level> {
     drawElement(gui, getModel().getExit(), new ExitViewer());
     drawElements(gui, getModel().getEnemies(), new EnemyViewer());
     drawElement(gui, getModel().getPlayer(), new PlayerViewer());
+    drawElements(gui, getModel().getBullets(), new BulletViewer());
 
     gui.drawText(new Position(0, 0), "Health: " + getModel().getPlayer().getHealth(), "#FFD700");
   }
