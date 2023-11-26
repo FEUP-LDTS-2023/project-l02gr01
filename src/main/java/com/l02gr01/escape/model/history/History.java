@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class History {
-    private static History instance = new History();
+    private static final History instance = new History();
     private List<Event> history;
 
 
