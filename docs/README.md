@@ -48,7 +48,7 @@ Here are some screenshots of the game functionalities as of 26/11:
 
 The resulting UML for our game is as follows.
 
-![The UML of the Escape Game](ldtsUML.jpeg)
+![The UML of the Escape Game](ldtsUML.jpg)
 
 
 ---
