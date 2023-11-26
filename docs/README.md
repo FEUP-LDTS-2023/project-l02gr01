@@ -145,6 +145,8 @@ movement for enemies.
 
 --- 
 
+We also applied the Singleton to the Game class.
+
 In the rest of the project, we tried to follow the SOLID principles, making use of polimorphism and other good practices.
 However, there are still some code smells.
 

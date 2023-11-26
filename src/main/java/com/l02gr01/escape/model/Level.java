@@ -15,13 +15,13 @@ public class Level {
   private int height;
 
   private Player player;
-  private List<Wall> walls = new ArrayList<>();
-  private List<Key> keys = new ArrayList<>();
+  private List<Wall> walls = new ArrayList<Wall>();
+  private List<Key> keys = new ArrayList<Key>();
   private Exit exit;
 
-  private List<Power> powers = new ArrayList<>();
+  private List<Power> powers = new ArrayList<Power>();
 
-  private List<Enemy> enemies = new ArrayList<>();
+  private List<Enemy> enemies = new ArrayList<Enemy>();
 
   public Level(int width, int height) {
     this.width = width;
