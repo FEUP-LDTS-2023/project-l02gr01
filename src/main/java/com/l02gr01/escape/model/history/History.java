@@ -6,7 +6,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class History {
-    private List<Event> history = new ArrayList<Event>();
+    private static History instance = new History();
+    private List<Event> history;
+
+
+    public static History getInstance(){
+        return instance;
+    }
+
+    private History(){
+        // Load history from file
+        history = new ArrayList<Event>();
+    }
 
     public List<Event> listEvents(){
         return history;
