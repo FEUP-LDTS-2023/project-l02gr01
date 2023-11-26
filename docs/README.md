@@ -34,6 +34,7 @@ Here are some screenshots of the game functionalities as of 26/11:
 
 ![Leaderboard Design](leaderboard.jpeg)
 
+![Limited Visibility](limitedvisibility.jpeg)
 
 ## DESIGN
 
@@ -102,8 +103,14 @@ from the memory file (at HistoryLoader.java).
 
 **Problem in Context**
 
-To handle the different stages of the game, such as the instruction stage, the pre-game stage (where we ask the user's name), the game stage
-and the leaderboard stage, we decided to use the State Pattern.
+We needed to handle the different stages of the game, such as the instruction stage, the pre-game stage (where we ask the user's name), the game stage
+and the leaderboard stage. However, we didn't want to add long conditionals in Game.
+
+
+**Pattern**
+
+This lead to the use of State Pattern, because it facilitates changing the state of the game at the runtime whenever the user interacts with the game or when something important happens.
+
 
 **Implementation**
 
@@ -123,10 +130,14 @@ Using State Pattern, it becomes easy to change states during the game and behavi
 
 Using a simple game logic, the game would run extremely fast on powerful computers and slow on slower machines.
 
-**Implementation**
+**Pattern**
 
 To solve this issue, we implemented the game loop, which decouples the progression of the game
 from the user input and processor speed.
+
+**Implementation**
+
+We track the passage of time and guarantee that the time between each "step" method invocation is always constant. 
 
 File: Game.java
 
@@ -142,7 +153,12 @@ that may use our game.
 **Problem in Context**
 
 We wanted to guarantee that while some enemies where easy to run away from, some would try to follow the user.
-For this, we used the Strategy Pattern.
+
+**The Pattern**
+
+For this, we used the Strategy Pattern. This means that we can decide the moving strategy of each enemy without having to
+create a lot of different classes for each enemy moving strategy. And, facilitates the management of enemies in the Controller 
+and Viewer part.
 
 **Implementation**
 
@@ -157,7 +173,7 @@ movement for enemies.
 
 --- 
 
-We also applied the Singleton to the Game class.
+We also applied the Singleton to the Game class, to guarantee that there is only one Game running at a time.
 
 In the rest of the project, we tried to follow the SOLID principles, making use of polimorphism and other good practices.
 However, there are still some code smells.

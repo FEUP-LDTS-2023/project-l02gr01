@@ -11,10 +11,9 @@ import java.net.URISyntaxException;
 
 public class Game {
     private final LanternaGUI gui;
-
     private State state;
 
-    public Game() throws IOException, URISyntaxException, FontFormatException {
+    private Game() throws IOException, URISyntaxException, FontFormatException {
         // Add singleton logic
         this.gui = new LanternaGUI(20, 20);
         this.state = new MenuState(new Menu());
