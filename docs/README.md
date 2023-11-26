@@ -18,6 +18,9 @@ This project was developed by *Filipe Correia* (*up202206776*@up.pt), *Gonçalo 
 
 Here are some screenshots of the game functionalities as of 26/11:
 
+![Main State](home.png)
+![Instructions](instructions.png)
+![Game](game26_11.png)
 
 
 ## PLANNED FEATURES
@@ -28,6 +31,8 @@ Here are some screenshots of the game functionalities as of 26/11:
 - Gun for the player: The player may shoot on the monsters. But, ammunition is limited: You get 5 bullets for each key grabbed. If you don't have bullets, you have to run!
 - Score System: Points are awarded based on speed and the number of keys collected.
 - Leaderboard: The leaderboard is the interface where players can find the scores of the last players and compare their scores 
+
+![Leaderboard Design](leaderboard.jpeg)
 
 
 ## DESIGN
@@ -43,7 +48,7 @@ Here are some screenshots of the game functionalities as of 26/11:
 
 The resulting UML for our game is as follows.
 
-![The UML of the Escape Game](ldtsUML.png)
+![The UML of the Escape Game](ldtsUML.jpeg)
 
 
 ---
