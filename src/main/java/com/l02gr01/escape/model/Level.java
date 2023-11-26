@@ -17,7 +17,7 @@ public class Level {
   private Player player;
   private List<Wall> walls = new ArrayList<>();
   private List<Key> keys = new ArrayList<>();
-  private Exit exit = new Exit(5, 0);
+  private Exit exit;
 
   private List<Power> powers = new ArrayList<>();
 

@@ -25,8 +25,6 @@ Here are some screenshots of the game functionalities as of 26/11:
 > This section is similar to the previous one but should list the features that are not yet implemented. Instead of screenshots you should include GUI mock-ups for the planned features.
 
 - Limited Visibility: The player can only see the YxY field near himself.
-- Keys: The player must grab all the keys to open the exit door
-- Various monsters: The monsters try to complicate your life
 - Gun for the player: The player may shoot on the monsters. But, ammunition is limited: You get 5 bullets for each key grabbed. If you don't have bullets, you have to run!
 - Score System: Points are awarded based on speed and the number of keys collected.
 - Leaderboard: The leaderboard is the interface where players can find the scores of the last players and compare their scores 
@@ -99,13 +97,12 @@ and the leaderboard stage, we decided to use the State Pattern.
 
 We created a state for each stage of the game, inheriting from the State class.
 
-Files: State.java, MenuState.java, LeaderBoardState.java, InstructionState.java, GameState.java
-
-(PreGameState is not yet implemented)
+Files: [State.java](../src/main/java/com/l02gr01/escape/states/State.java), [MenuState.java](../src/main/java/com/l02gr01/escape/states/MenuState.java), [LeaderBoardState.java](../src/main/java/com/l02gr01/escape/states/LeaderBoardState.java), [InstructionState.java](../src/main/java/com/l02gr01/escape/states/InstructionState.java), [GameState.java](../src/main/java/com/l02gr01/escape/states/State.java)
 
 
 **Consequences**
 
+Using State Pattern, it becomes easy to change states during the game and behaviour is easily updated by this change.
 
 
 ### Game Loop
@@ -143,6 +140,8 @@ The EnemyController will have a MovingStrategy associated.
 
 **Consequences**
 
+This pattern allows for easy selection of the moving algorithm for the enemies, easy inclusion of new algorithms of
+movement for enemies and
 
 --- 
 

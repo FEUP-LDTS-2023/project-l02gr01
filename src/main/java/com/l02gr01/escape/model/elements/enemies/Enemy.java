@@ -1,5 +1,6 @@
 package com.l02gr01.escape.model.elements.enemies;
 
+import com.l02gr01.escape.model.Position;
 import com.l02gr01.escape.model.elements.Element;
 
 public abstract class Enemy extends Element {
@@ -26,4 +27,5 @@ public abstract class Enemy extends Element {
   public String getColor(){
     return color;
   };
+  public abstract Position nextMove();
 }

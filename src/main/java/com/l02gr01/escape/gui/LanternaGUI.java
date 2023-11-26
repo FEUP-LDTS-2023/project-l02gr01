@@ -3,6 +3,7 @@ package com.l02gr01.escape.gui;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
+import com.googlecode.lanterna.gui2.TextBox;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.Screen;
@@ -22,6 +23,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.Scanner;
 
 public class LanternaGUI implements GUI{
 
@@ -156,5 +158,7 @@ public class LanternaGUI implements GUI{
         }
         drawCharacter(position.getX(), position.getY(), 'E', exitColor);
     }
+
+
 
 }
