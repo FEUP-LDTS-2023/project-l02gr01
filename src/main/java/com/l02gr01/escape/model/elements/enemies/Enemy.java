@@ -4,13 +4,26 @@ import com.l02gr01.escape.model.elements.Element;
 
 public abstract class Enemy extends Element {
 
-  public Enemy(int x, int y) {
+  int damage;
+  char symbol;
+  String color;
+
+  public Enemy(int x, int y, int damage, char symbol, String color) {
     super(x, y);
+    this.damage = damage;
+    this.symbol = symbol;
+    this.color = color;
   }
 
-  public abstract int getDamage();
+  public int getDamage(){
+    return damage;
+  };
 
-  public abstract char getSymbol();
+  public  char getSymbol(){
+    return symbol;
+  };
 
-  public abstract String getColor();
+  public String getColor(){
+    return color;
+  };
 }
