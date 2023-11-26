@@ -11,17 +11,23 @@ import com.l02gr01.escape.model.elements.powers.Shield;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+
+import static java.nio.charset.StandardCharsets.UTF_8;
 
 public class LevelBuilder {
   private final List<String> lines;
 
-  public LevelBuilder(int level) throws IOException {
+  public LevelBuilder(int level) throws IOException, URISyntaxException {
     URL resource = LevelBuilder.class.getResource("/levels/level" + level + ".lvl");
-    BufferedReader br = new BufferedReader(new FileReader(resource.getFile()));
-
+      assert resource != null;
+      BufferedReader br = Files.newBufferedReader(Paths.get(resource.toURI()), Charset.defaultCharset());
     lines = readLines(br);
   }
 

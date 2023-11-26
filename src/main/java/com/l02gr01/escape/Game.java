@@ -23,7 +23,7 @@ public class Game {
     public static void main(String[] args) throws IOException, FontFormatException, URISyntaxException {
         new Game().start();
     }
-    private void start() throws IOException {
+    private void start() throws IOException, URISyntaxException {
         int FPS = 10;
         int frameTime = 1000 / FPS;
 

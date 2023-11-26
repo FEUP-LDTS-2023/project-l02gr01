@@ -21,7 +21,7 @@ public class Level {
 
   private List<Power> powers = new ArrayList<>();
 
-  private List<Enemy> enemies = new ArrayList();
+  private List<Enemy> enemies = new ArrayList<>();
 
   public Level(int width, int height) {
     this.width = width;

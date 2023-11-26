@@ -8,8 +8,8 @@ import com.l02gr01.escape.viewer.Viewer;
 import java.util.List;
 
 public class GameViewer extends Viewer<Level> {
-  public GameViewer(Level Level) {
-    super(Level);
+  public GameViewer(Level level) {
+    super(level);
   }
 
   @Override
