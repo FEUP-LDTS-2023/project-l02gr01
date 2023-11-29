@@ -109,6 +109,7 @@ public class Level {
     return enemies;
   }
 
+
   public void setEnemies(List<Enemy> enemies) {
     this.enemies = enemies;
   }
@@ -151,10 +152,17 @@ public class Level {
     return bullets;
   }
 
+  public void setBullets(List<Bullet> b){
+    bullets = b;
+  }
+
   public void shoot(){
     if(player.isBulletAvailable()){
-      bullets.add(new Bullet(player.getPosition().getX(), player.getPosition().getY(), player.getDirection()));
+      // It's possible to now change the damage caused by the bullets in the following line.
+      // This may be useful for new powers that change the power of the bullets
+      bullets.add(new Bullet(player.getPosition().getX(), player.getPosition().getY(), player.getDirection(), 10));
       player.usedBullet();
     }
   }
+
 }

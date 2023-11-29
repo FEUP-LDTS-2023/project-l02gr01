@@ -14,7 +14,7 @@ public class Player extends Element {
     private int health;
     private int bulletsAvailable = 5;
 
-    private Position lastdirection;
+    private Position lastdirection = new Position(1,0);
 
     Map<PowerType, Long> activePowers = new HashMap<>();
 
@@ -65,6 +65,9 @@ public class Player extends Element {
             bulletsAvailable = 0;
         }
     }
+
+
+
     public boolean isBulletAvailable(){
         if(bulletsAvailable > 0){
             return true;
