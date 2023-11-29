@@ -12,7 +12,9 @@ import java.util.Map;
 
 public class Player extends Element {
     private int health;
-    private int bulletsAvailable = 0;
+    private int bulletsAvailable = 5;
+
+    private Position lastdirection;
 
     Map<PowerType, Long> activePowers = new HashMap<>();
 
@@ -21,7 +23,18 @@ public class Player extends Element {
         this.health = 100;
     }
 
+    @Override
+    public void setPosition(Position position){
+        int xd = position.getX() - getPosition().getX();
+        int yd = position.getY() - getPosition().getY();
+        lastdirection = new Position(xd, yd);
 
+        super.setPosition(position);
+    }
+
+    public Position getDirection(){
+        return lastdirection;
+    }
 
     public int getHealth() {
         return health;
@@ -46,6 +59,12 @@ public class Player extends Element {
     }
 
 
+    public void usedBullet(){
+        bulletsAvailable--;
+        if(bulletsAvailable < 0){
+            bulletsAvailable = 0;
+        }
+    }
     public boolean isBulletAvailable(){
         if(bulletsAvailable > 0){
             return true;

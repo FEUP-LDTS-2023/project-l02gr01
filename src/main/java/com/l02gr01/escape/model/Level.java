@@ -153,7 +153,8 @@ public class Level {
 
   public void shoot(){
     if(player.isBulletAvailable()){
-      bullets.add(new Bullet(player.getPosition().getX(), player.getPosition().getY(), new Position(0,1)));
+      bullets.add(new Bullet(player.getPosition().getX(), player.getPosition().getY(), player.getDirection()));
+      player.usedBullet();
     }
   }
 }
