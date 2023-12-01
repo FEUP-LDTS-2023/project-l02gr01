@@ -124,7 +124,7 @@ public class LanternaGUI implements GUI{
     public void drawPlayer(Player player) {
         String playerColor = "#FFD700";
         if (player.getActivePowers().containsKey(PowerType.SHIELD)) {
-            playerColor = "#21fbff";
+            playerColor = "#a894ff";
         }
         drawCharacter(player.getPosition().getX(), player.getPosition().getY(), Symbols.FACE_WHITE, playerColor);
     }
