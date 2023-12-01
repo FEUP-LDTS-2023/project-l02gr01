@@ -1,5 +1,6 @@
 package com.l02gr01.escape.states;
 
+import com.l02gr01.escape.audio.AudioManager;
 import com.l02gr01.escape.controller.Controller;
 import com.l02gr01.escape.controller.LevelController;
 import com.l02gr01.escape.model.Level;
@@ -10,6 +11,9 @@ import com.l02gr01.escape.viewer.game.GameViewer;
 public class GameState extends State<Level>{
     public GameState(LevelBuilder levelBuilder) {
         super(levelBuilder.createLevel());
+        // Example for playing game music when the level starts
+//        AudioManager.getInstance().stopAllSounds();
+//        AudioManager.getInstance().startGameSound();
     }
 
     @Override
