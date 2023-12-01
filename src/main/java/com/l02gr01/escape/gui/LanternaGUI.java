@@ -151,7 +151,7 @@ public class LanternaGUI implements GUI{
 
     @Override
     public void drawExit(Position position, boolean isOpen) {
-        String exitColor = "#636361";
+        String exitColor = "#5c012e";
         if (isOpen) {
             exitColor = "#1bf207";
         }

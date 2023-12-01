@@ -10,6 +10,7 @@ public class Level {
 
   private int width;
   private int height;
+  private final int levelNumber;
 
   private Player player;
   private List<Wall> walls = new ArrayList<Wall>();
@@ -20,9 +21,10 @@ public class Level {
 
   private List<Enemy> enemies = new ArrayList<Enemy>();
 
-  public Level(int width, int height) {
+  public Level(int width, int height, int levelNumber) {
     this.width = width;
     this.height = height;
+    this.levelNumber = levelNumber;
   }
 
 
@@ -119,5 +121,9 @@ public class Level {
 
   public void removePower(Power power) {
     powers.remove(power);
+  }
+
+  public int getLevelNumber() {
+    return levelNumber;
   }
 }
