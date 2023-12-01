@@ -7,6 +7,7 @@ import com.l02gr01.escape.model.elements.enemies.MovingStrategy.RandomMovingStra
 import com.l02gr01.escape.gui.GUI;
 import com.l02gr01.escape.model.Level;
 import com.l02gr01.escape.model.elements.enemies.Enemy;
+import com.l02gr01.escape.model.elements.powers.Power.PowerType;
 import java.io.IOException;
 
 public class EnemyController extends GameController {
@@ -28,9 +29,11 @@ public class EnemyController extends GameController {
     }
 
     private void moveEnemy(Enemy enemy) {
-        enemy.setPosition(enemy.getStrategy().moveEnemy(enemy.getPosition(),getModel())); // moves the enemy according to its moving strategy
-        if (getModel().getPlayer().getPosition().equals(enemy.getPosition())) {
-            getModel().getPlayer().changeHealth(-1 * enemy.getDamage());
+        if (!getModel().getPlayer().getActivePowers().containsKey(PowerType.FREEZE_ENEMY)) {
+            enemy.setPosition(enemy.getStrategy().moveEnemy(enemy.getPosition(),getModel())); // moves the enemy according to its moving strategy
+            if (getModel().getPlayer().getPosition().equals(enemy.getPosition())) {
+                getModel().getPlayer().changeHealth(-1 * enemy.getDamage());
+            }
         }
     }
 }

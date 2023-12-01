@@ -16,7 +16,7 @@ public class LevelController extends GameController {
   private final ExitController exitController;
   
   private final EnemyController enemyController;
-  private static final int MAX_LEVEL = 3;
+  private static final int MAX_LEVEL = 4;
 
   public LevelController(Level level) {
     super(level);

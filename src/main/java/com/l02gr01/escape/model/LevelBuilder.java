@@ -4,6 +4,7 @@ import com.l02gr01.escape.model.elements.*;
 import com.l02gr01.escape.model.elements.enemies.Enemy;
 import com.l02gr01.escape.model.elements.enemies.StrongTroll;
 import com.l02gr01.escape.model.elements.enemies.Troll;
+import com.l02gr01.escape.model.elements.powers.FreezeEnemy;
 import com.l02gr01.escape.model.elements.powers.Power;
 import com.l02gr01.escape.model.elements.powers.Shield;
 import java.io.BufferedReader;
@@ -55,8 +56,13 @@ public class LevelBuilder {
     List<Power> powers = new ArrayList<>();
     for (int y = 0; y < lines.size(); y++) {
       String line = lines.get(y);
-      for (int x = 0; x < line.length(); x++)
-        if (line.charAt(x) == 'S') powers.add(new Shield(x, y));
+      for (int x = 0; x < line.length(); x++) {
+        if (line.charAt(x) == 'S') {
+          powers.add(new Shield(x, y));
+        } else if (line.charAt(x) == 'F') {
+          powers.add(new FreezeEnemy(x, y));
+        }
+      }
     }
     return powers;
   }
