@@ -6,6 +6,10 @@ import com.l02gr01.escape.gui.GUI.ACTION;
 import com.l02gr01.escape.model.Level;
 import com.l02gr01.escape.model.LevelBuilder;
 import com.l02gr01.escape.model.Menu;
+import com.l02gr01.escape.model.history.History;
+import com.l02gr01.escape.model.history.User;
+import com.l02gr01.escape.model.history.event.Loss;
+import com.l02gr01.escape.model.history.event.Win;
 import com.l02gr01.escape.states.GameState;
 import com.l02gr01.escape.states.MenuState;
 import java.io.IOException;
@@ -17,19 +21,25 @@ public class LevelController extends GameController {
   
   private final EnemyController enemyController;
   private static final int MAX_LEVEL = 4;
+  private long startTime;
 
   public LevelController(Level level) {
     super(level);
     this.playerController = new PlayerController(level);
     this.exitController = new ExitController(level);
     this.enemyController = new EnemyController(level);
+    this.startTime = System.currentTimeMillis();
   }
 
   @Override
   public void step(Game game, ACTION action, long time) throws IOException, URISyntaxException {
     if (action == GUI.ACTION.QUIT || getModel().getPlayer().getHealth() == 0) {
+      int elapsedTime = (int) ((System.currentTimeMillis() - startTime) / 1000);
+      History.getInstance().push(new Loss(User.getInstance().getUsername(), elapsedTime, getModel().getLevelNumber(), getModel().getKeys().getList().size() - getModel().getKeys().getRemainingKeys()));
       game.setState(new MenuState(new Menu()));
     } else if (getModel().getExit().getPosition().equals(getModel().getPlayer().getPosition())) {
+      int elapsedTime = (int) ((System.currentTimeMillis() - startTime) / 1000);
+      History.getInstance().push(new Win(User.getInstance().getUsername(), elapsedTime, getModel().getLevelNumber()));
       if (getModel().getLevelNumber() == MAX_LEVEL) {
         game.setState(new MenuState(new Menu()));
       } else {
