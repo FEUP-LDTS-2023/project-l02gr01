@@ -11,6 +11,7 @@ import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
+import com.l02gr01.escape.gui.text.TextManipulator;
 import com.l02gr01.escape.model.Position;
 import com.l02gr01.escape.model.elements.Player;
 import com.l02gr01.escape.model.elements.enemies.Enemy;
@@ -88,7 +89,10 @@ public class LanternaGUI implements GUI{
         if (keyStroke.getKeyType() == KeyType.ArrowLeft) return ACTION.LEFT;
 
         if (keyStroke.getKeyType() == KeyType.Enter) return ACTION.SELECT;
-
+        Character key = keyStroke.getCharacter();
+        if (key != null) {
+            TextManipulator.getInstance().addCharacter(key);
+        }
         return ACTION.NONE;
     }
 
