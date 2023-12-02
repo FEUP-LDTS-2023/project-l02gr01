@@ -1,6 +1,7 @@
 package com.l02gr01.escape.controller;
 
 import com.l02gr01.escape.Game;
+import com.l02gr01.escape.audio.AudioManager;
 import com.l02gr01.escape.gui.GUI;
 import com.l02gr01.escape.model.Instruction;
 import com.l02gr01.escape.model.LevelBuilder;
@@ -28,7 +29,9 @@ public class MenuController extends Controller<Menu> {
         getModel().nextEntry();
         break;
       case SELECT:
-        if (getModel().isSelectedExit()) game.setState(null);
+        if (getModel().isSelectedExit()){
+          game.setState(null);
+        }
         if (getModel().isSelectedStart()) game.setState(new PreGameState(new PreGame()));
         if (getModel().isSelectedInstruction()) game.setState(new InstructionState(new Instruction()));
         break;

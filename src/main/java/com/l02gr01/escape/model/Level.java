@@ -21,6 +21,8 @@ public class Level {
 
   private List<Enemy> enemies = new ArrayList<Enemy>();
 
+
+
   public Level(int width, int height, int levelNumber) {
     this.width = width;
     this.height = height;

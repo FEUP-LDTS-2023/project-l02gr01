@@ -2,11 +2,11 @@ package com.l02gr01.escape.model.history.event;
 
 public abstract class Event {
     private String name;
-    private int time;
+    private long time;
     private int finallevel;
 
 
-    public Event(String name, int time, int finallevel){
+    public Event(String name, long time, int finallevel){
         this.finallevel = finallevel;
         this.time = time;
         this.name = name;
@@ -14,7 +14,7 @@ public abstract class Event {
     public String getName(){
         return name;
     }
-    public int getTime(){
+    public long getTime(){
         return time;
     }
     public int getFinallevel(){
@@ -22,7 +22,7 @@ public abstract class Event {
     }
 
     public int getPoints(){
-        return finallevel * 7 - (time / 5 );
+        return (int) (finallevel * 7 - (time / 5 ));
     }
 
     public abstract String getInfo();

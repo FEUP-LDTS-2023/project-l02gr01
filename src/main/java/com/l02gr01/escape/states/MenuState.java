@@ -10,6 +10,7 @@ import com.l02gr01.escape.viewer.menu.MenuViewer;
 public class MenuState extends State<Menu> {
     public MenuState(Menu model) {
         super(model);
+        AudioManager.getInstance().stopAllSounds();
         AudioManager.getInstance().playBackgroundMusic();
     }
 
