@@ -1,7 +1,7 @@
 Win,ex1,2,4
 Win,ex2,3,4
+Win,ex7,4,4
 Win,ex3,4,3
+Win,ex6,2,2
 Win,ex4,5,2
 Win,ex5,1,1
-Win,ex6,2,2
-Win,ex7,4,4

@@ -13,7 +13,7 @@ public class Leaderboard {
 
     public Leaderboard() throws URISyntaxException, IOException {
         historyLoader.loadMemory();
-        //History.getInstance().sort() (Fazer sort)
+        History.getInstance().sort();
     }
 
     public void clearHistory() throws URISyntaxException, IOException {

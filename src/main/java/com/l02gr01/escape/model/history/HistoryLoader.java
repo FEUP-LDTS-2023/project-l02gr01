@@ -28,7 +28,6 @@ public class HistoryLoader {
 
     private void clear(String fileLocation) throws IOException {
         FileOutputStream outputStream = new FileOutputStream(fileLocation, false);
-        byte[] empty = new byte[0];
         outputStream.write(new byte[0]);
         outputStream.close();
     }
