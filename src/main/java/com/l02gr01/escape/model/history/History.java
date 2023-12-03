@@ -3,6 +3,8 @@ package com.l02gr01.escape.model.history;
 import com.l02gr01.escape.model.history.event.Event;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class History {
@@ -28,7 +30,13 @@ public class History {
         history.add(event);
     }
 
+    public void setHistory(List<Event> history) {
+        this.history = history;
+    }
 
+    public void sort() {
+        history.sort(Comparator.comparingInt(Event::getPoints).reversed());
+  
     public long getStartTime() {
         return lastStartTime;
     }

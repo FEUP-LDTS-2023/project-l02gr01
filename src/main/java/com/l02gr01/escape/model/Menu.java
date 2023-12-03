@@ -41,6 +41,5 @@ public class Menu {
         return this.entries.size();
     }
 
-
-
+    public boolean isSelectedLeaderboard() {return isSelected(2);}
 }

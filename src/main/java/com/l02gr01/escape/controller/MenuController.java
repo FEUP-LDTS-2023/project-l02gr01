@@ -3,12 +3,10 @@ package com.l02gr01.escape.controller;
 import com.l02gr01.escape.Game;
 import com.l02gr01.escape.audio.AudioManager;
 import com.l02gr01.escape.gui.GUI;
-import com.l02gr01.escape.model.Instruction;
-import com.l02gr01.escape.model.LevelBuilder;
-import com.l02gr01.escape.model.Menu;
-import com.l02gr01.escape.model.PreGame;
+import com.l02gr01.escape.model.*;
 import com.l02gr01.escape.states.GameState;
 import com.l02gr01.escape.states.InstructionState;
+import com.l02gr01.escape.states.LeaderBoardState;
 import com.l02gr01.escape.states.PreGameState;
 
 import java.io.IOException;
@@ -34,6 +32,7 @@ public class MenuController extends Controller<Menu> {
         }
         if (getModel().isSelectedStart()) game.setState(new PreGameState(new PreGame()));
         if (getModel().isSelectedInstruction()) game.setState(new InstructionState(new Instruction()));
+        if (getModel().isSelectedLeaderboard()) game.setState(new LeaderBoardState(new Leaderboard()));
         break;
       default:
         break;
