@@ -37,7 +37,7 @@ public class HistoryLoader {
             List<String> parts = Splitter.on(',').splitToList(line);
             String result = parts.get(0);
             String username = parts.get(1);
-            int time = Integer.parseInt(parts.get(2));
+            long time = Long.parseLong(parts.get(2));
             int level = Integer.parseInt(parts.get(3));
 
             if (result.equals("Win")) {
