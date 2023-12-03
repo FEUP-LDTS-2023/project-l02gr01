@@ -50,6 +50,9 @@ public class PlayerController extends GameController {
             }
             Power power = getModel().getPower(position);
             if (power != null) {
+                if (power.getType() == PowerType.SUPER_VISION) {
+                    time -= 3500;
+                }
                 getModel().getPlayer().addPower(power, time);
                 getModel().removePower(power);
             }

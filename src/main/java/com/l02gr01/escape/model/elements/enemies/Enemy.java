@@ -47,8 +47,6 @@ public abstract class Enemy extends Element {
     return false;
   }
 
-  public abstract char getSymbol();
-
   public String getColor(){
     return color;
   };

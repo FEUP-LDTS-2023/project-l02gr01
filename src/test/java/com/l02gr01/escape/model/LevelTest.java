@@ -16,7 +16,7 @@ class LevelTest {
 
     @BeforeEach
     void setUp() {
-        level = new Level(10, 10);
+        level = new Level(10, 10,1);
     }
 
     @Test
