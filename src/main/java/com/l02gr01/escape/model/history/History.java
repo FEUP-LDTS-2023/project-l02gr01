@@ -11,6 +11,8 @@ public class History {
     private static final History instance = new History();
     private List<Event> history;
 
+    private long lastStartTime = 0;
+
 
     public static History getInstance(){
         return instance;
@@ -34,5 +36,12 @@ public class History {
 
     public void sort() {
         history.sort(Comparator.comparingInt(Event::getPoints).reversed());
+  
+    public long getStartTime() {
+        return lastStartTime;
+    }
+
+    public void setStartTime(long lastStartTime) {
+        this.lastStartTime = lastStartTime;
     }
 }

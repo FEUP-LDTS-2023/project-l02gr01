@@ -10,7 +10,7 @@ public class RandomMovingStrategy implements MovingStrategy {
         Position finalpos;
         do {
             finalpos = position.getRandomNeighbour();
-        }while (!level.isEmpty(finalpos));
+        }while (!level.isEmpty(finalpos) && !level.getExit().getPosition().equals(finalpos));
         return finalpos;
     }
 }

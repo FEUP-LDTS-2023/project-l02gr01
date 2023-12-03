@@ -34,13 +34,11 @@ public class LevelController extends GameController {
   @Override
   public void step(Game game, ACTION action, long time) throws IOException, URISyntaxException {
     if (action == GUI.ACTION.QUIT || getModel().getPlayer().getHealth() == 0) {
-      int elapsedTime = (int) ((System.currentTimeMillis() - startTime) / 1000);
-      History.getInstance().push(new Loss(User.getInstance().getUsername(), elapsedTime, getModel().getLevelNumber(), getModel().getKeys().getList().size() - getModel().getKeys().getRemainingKeys()));
       game.setState(new MenuState(new Menu()));
     } else if (getModel().getExit().getPosition().equals(getModel().getPlayer().getPosition())) {
-      int elapsedTime = (int) ((System.currentTimeMillis() - startTime) / 1000);
-      History.getInstance().push(new Win(User.getInstance().getUsername(), elapsedTime, getModel().getLevelNumber()));
       if (getModel().getLevelNumber() == MAX_LEVEL) {
+        long finaltime = time - History.getInstance().getStartTime();
+        History.getInstance().push(new Win(User.getInstance().getUsername(), finaltime, MAX_LEVEL));
         game.setState(new MenuState(new Menu()));
       } else {
         game.setState(new GameState(new LevelBuilder(getModel().getLevelNumber() + 1)));
