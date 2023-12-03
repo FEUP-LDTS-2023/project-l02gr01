@@ -32,13 +32,18 @@ public class LevelController extends GameController {
     if (action == GUI.ACTION.QUIT || getModel().getPlayer().getHealth() == 0) {
       game.setState(new MenuState(new Menu()));
     } else if (getModel().getExit().getPosition().equals(getModel().getPlayer().getPosition())) {
+
       if (getModel().getLevelNumber() == MAX_LEVEL) {
+
         long finaltime = time - History.getInstance().getStartTime();
         History.getInstance().push(new Win("Filipe", finaltime, MAX_LEVEL));
         game.setState(new MenuState(new Menu()));
+
       } else {
+
         game.setState(new GameState(new LevelBuilder(getModel().getLevelNumber() + 1)));
       }
+
     } else {
       playerController.step(game, action, time);
       exitController.step(game, action, time);

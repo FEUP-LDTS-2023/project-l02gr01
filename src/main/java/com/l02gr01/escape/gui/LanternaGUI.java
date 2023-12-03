@@ -90,7 +90,7 @@ public class LanternaGUI implements GUI{
 
         if (keyStroke.getKeyType() == KeyType.Enter) return ACTION.SELECT;
         Character key = keyStroke.getCharacter();
-        if (key != null) {
+        if (key >= 'a' && key <= 'z') {
             TextManipulator.getInstance().addCharacter(key);
         }
         return ACTION.NONE;

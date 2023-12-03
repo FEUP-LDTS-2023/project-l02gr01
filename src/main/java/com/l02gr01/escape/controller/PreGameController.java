@@ -2,6 +2,7 @@ package com.l02gr01.escape.controller;
 
 import com.l02gr01.escape.Game;
 import com.l02gr01.escape.gui.GUI;
+import com.l02gr01.escape.gui.text.TextManipulator;
 import com.l02gr01.escape.model.Instruction;
 import com.l02gr01.escape.model.LevelBuilder;
 import com.l02gr01.escape.model.PreGame;
@@ -17,11 +18,14 @@ import java.util.Scanner;
 public class PreGameController extends Controller<PreGame> {
     public PreGameController(PreGame model) {
         super(model);
+        TextManipulator.getInstance().setListener(model);
+        TextManipulator.getInstance().setReading(true);
     }
 
     @Override
     public void step(Game game, GUI.ACTION action, long time) throws IOException, URISyntaxException {
         if(action == GUI.ACTION.SELECT){
+            TextManipulator.getInstance().setReading(false);
             game.setState(new GameState(new LevelBuilder(1)));
             History.getInstance().setStartTime(time);
         }

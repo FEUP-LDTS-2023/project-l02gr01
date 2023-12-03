@@ -7,7 +7,7 @@ public class TextManipulator {
     private static TextManipulator instance = new TextManipulator();
     private boolean reading = false;
 
-    List<TextObserver> observerList = new ArrayList<>();
+    TextObserver observer;
 
     private StringBuilder text = new StringBuilder();
 
@@ -17,22 +17,27 @@ public class TextManipulator {
 
     public void setReading(boolean read){
         reading = read;
-        if(read == false){
+        if(!read){
             text = new StringBuilder();
         }
     }
     public void addCharacter(char character){
         if(reading){
             text.append(character);
+            updateListeners();
         }
     }
     public String read(){
         return text.toString();
     }
 
+    public void setListener(TextObserver obs){
+        observer = obs;
+    }
+
     public void updateListeners(){
-        for(TextObserver obs : observerList){
-            obs.beNotified();
+        if(observer != null){
+            observer.beNotified(text.toString());
         }
     }
 }
