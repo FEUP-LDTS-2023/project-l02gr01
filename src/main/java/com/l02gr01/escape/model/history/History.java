@@ -26,5 +26,7 @@ public class History {
         history.add(event);
     }
 
-
+    public void setHistory(List<Event> history) {
+        this.history = history;
+    }
 }

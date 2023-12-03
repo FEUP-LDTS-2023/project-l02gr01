@@ -6,10 +6,7 @@ import com.l02gr01.escape.model.history.event.Event;
 import com.l02gr01.escape.model.history.event.Loss;
 import com.l02gr01.escape.model.history.event.Win;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.net.URISyntaxException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -26,6 +23,14 @@ public class HistoryLoader {
 
         BufferedReader br = Files.newBufferedReader(Paths.get(fileLocation), Charset.defaultCharset());
         readEvent(br);
+        clear(fileLocation);
+    }
+
+    private void clear(String fileLocation) throws IOException {
+        FileOutputStream outputStream = new FileOutputStream(fileLocation, false);
+        byte[] empty = new byte[0];
+        outputStream.write(new byte[0]);
+        outputStream.close();
     }
 
     private void readEvent(BufferedReader br) throws IOException {
