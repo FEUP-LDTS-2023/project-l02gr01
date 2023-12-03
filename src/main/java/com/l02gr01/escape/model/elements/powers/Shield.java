@@ -1,5 +1,7 @@
 package com.l02gr01.escape.model.elements.powers;
 
+import com.googlecode.lanterna.Symbols;
+
 public class Shield extends Power {
 
   public Shield(int x, int y) {
@@ -13,11 +15,11 @@ public class Shield extends Power {
 
   @Override
   public char getSymbol() {
-    return 'O';
+    return Symbols.INVERSE_WHITE_CIRCLE;
   }
 
   @Override
   public String getColor() {
-    return "#03fbff";
+    return "#a894ff";
   }
 }

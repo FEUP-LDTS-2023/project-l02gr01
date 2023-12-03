@@ -16,7 +16,7 @@ public class GameViewer extends Viewer<Level> {
   public void drawElements(GUI gui) {
     drawElements(gui, getModel().getPowers(), new PowerViewer());
     drawElements(gui, getModel().getWalls(), new WallViewer());
-    drawElements(gui, getModel().getKeys(), new KeyViewer());
+    drawElements(gui, getModel().getKeys().getList(), new KeyViewer());
     drawElement(gui, getModel().getExit(), new ExitViewer());
     drawElements(gui, getModel().getEnemies(), new EnemyViewer());
     drawElement(gui, getModel().getPlayer(), new PlayerViewer());
@@ -31,6 +31,8 @@ public class GameViewer extends Viewer<Level> {
   }
 
   private <T extends Element> void drawElement(GUI gui, T element, ElementViewer<T> viewer) {
-    viewer.draw(element, gui);
+    //if(element.getPosition().iswithindistance(getModel().getPlayer().getPosition(), 3)){
+      viewer.draw(element, gui);
+    //}
   }
 }

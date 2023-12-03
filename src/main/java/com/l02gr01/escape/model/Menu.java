@@ -35,10 +35,11 @@ public class Menu {
         return isSelected(0);
     }
 
+    public boolean isSelectedInstruction() {return isSelected(1);}
+
     public int getNumberEntries() {
         return this.entries.size();
     }
 
-
-
+    public boolean isSelectedLeaderboard() {return isSelected(2);}
 }

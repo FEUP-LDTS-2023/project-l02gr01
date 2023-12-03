@@ -1,5 +1,6 @@
 package com.l02gr01.escape.states;
 
+import com.l02gr01.escape.audio.AudioManager;
 import com.l02gr01.escape.controller.Controller;
 import com.l02gr01.escape.controller.MenuController;
 import com.l02gr01.escape.model.Menu;
@@ -9,6 +10,8 @@ import com.l02gr01.escape.viewer.menu.MenuViewer;
 public class MenuState extends State<Menu> {
     public MenuState(Menu model) {
         super(model);
+        AudioManager.getInstance().stopAllSounds();
+        AudioManager.getInstance().playBackgroundMusic();
     }
 
     @Override
@@ -19,10 +22,6 @@ public class MenuState extends State<Menu> {
     @Override
     protected Controller<Menu> getController() {
         return new MenuController(getModel());
-    }
-
-    public MenuState(String a, Menu model) {
-        super(model);
     }
 
     // TBContinued

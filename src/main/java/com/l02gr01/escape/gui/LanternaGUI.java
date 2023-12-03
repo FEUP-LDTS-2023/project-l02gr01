@@ -1,5 +1,6 @@
 package com.l02gr01.escape.gui;
 
+import com.googlecode.lanterna.Symbols;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
@@ -62,14 +63,14 @@ public class LanternaGUI implements GUI{
     }
 
     private AWTTerminalFontConfiguration loadSquareFont() throws URISyntaxException, FontFormatException, IOException {
-        URL resource = getClass().getClassLoader().getResource("fonts/square.ttf");
+        URL resource = getClass().getClassLoader().getResource("fonts/font.ttf");
         File fontFile = new File(resource.toURI());
         Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
 
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         ge.registerFont(font);
 
-        Font loadedFont = font.deriveFont(Font.PLAIN, 25);
+        Font loadedFont = font.deriveFont(Font.PLAIN, 40);
         AWTTerminalFontConfiguration fontConfig = AWTTerminalFontConfiguration.newInstance(loadedFont);
         return fontConfig;
     }
@@ -97,7 +98,7 @@ public class LanternaGUI implements GUI{
     private void drawCharacter(int x, int y, char c, String color) {
         TextGraphics tg = screen.newTextGraphics();
         tg.setForegroundColor(TextColor.Factory.fromString(color));
-        tg.putString(x, y + 1, "" + c);
+        tg.setCharacter(x, y + 1, c);
     }
 
     @Override
@@ -126,19 +127,19 @@ public class LanternaGUI implements GUI{
     public void drawPlayer(Player player) {
         String playerColor = "#FFD700";
         if (player.getActivePowers().containsKey(PowerType.SHIELD)) {
-            playerColor = "#21fbff";
+            playerColor = "#a894ff";
         }
-        drawCharacter(player.getPosition().getX(), player.getPosition().getY(), 'P', playerColor);
+        drawCharacter(player.getPosition().getX(), player.getPosition().getY(), Symbols.FACE_WHITE, playerColor);
     }
 
     @Override
     public void drawWall(Position position) {
-        drawCharacter(position.getX(), position.getY(), '#', "#3333FF");
+        drawCharacter(position.getX(), position.getY(), Symbols.BLOCK_SOLID, "#3333FF");
     }
 
     @Override
     public void drawKey(Position position) {
-        drawCharacter(position.getX(), position.getY(), 'K', "#ffe100");
+        drawCharacter(position.getX(), position.getY(), Symbols.CLUB, "#ffe100");
     }
 
     @Override
@@ -159,11 +160,13 @@ public class LanternaGUI implements GUI{
 
     @Override
     public void drawExit(Position position, boolean isOpen) {
-        String exitColor = "#636361";
+        String exitColor = "#5c012e";
         if (isOpen) {
             exitColor = "#1bf207";
         }
-        drawCharacter(position.getX(), position.getY(), 'E', exitColor);
+        drawCharacter(position.getX(), position.getY(), Symbols.BLOCK_SPARSE, exitColor);
     }
+
+
 
 }

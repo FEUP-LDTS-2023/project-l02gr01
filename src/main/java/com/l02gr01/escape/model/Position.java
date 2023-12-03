@@ -61,4 +61,10 @@ public class Position {
     return Objects.hash(x, y);
   }
 
+  public boolean iswithindistance(Position center, int n){
+    if(Math.abs(getX() - center.getX()) <= n && Math.abs(getY() - center.getY()) <= n){
+      return true;
+    }
+    return false;
+  }
 }

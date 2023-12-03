@@ -1,27 +1,34 @@
 package com.l02gr01.escape.model;
 
-import com.l02gr01.escape.model.elements.Exit;
-import com.l02gr01.escape.model.elements.Key;
-import com.l02gr01.escape.model.elements.Player;
-import com.l02gr01.escape.model.elements.Wall;
+import com.l02gr01.escape.model.elements.*;
 import com.l02gr01.escape.model.elements.enemies.Enemy;
+import com.l02gr01.escape.model.elements.enemies.StrongTroll;
 import com.l02gr01.escape.model.elements.enemies.Troll;
+import com.l02gr01.escape.model.elements.powers.FreezeEnemy;
 import com.l02gr01.escape.model.elements.powers.Power;
 import com.l02gr01.escape.model.elements.powers.Shield;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.nio.charset.StandardCharsets.UTF_8;
+
 public class LevelBuilder {
   private final List<String> lines;
+  private final int levelNumber;
 
-  public LevelBuilder(int level) throws IOException {
-    URL resource = LevelBuilder.class.getResource("/levels/level" + level + ".lvl");
-    BufferedReader br = new BufferedReader(new FileReader(resource.getFile()));
-
+  public LevelBuilder(int levelNumber) throws IOException, URISyntaxException {
+    this.levelNumber = levelNumber;
+    URL resource = LevelBuilder.class.getResource("/levels/level" + levelNumber + ".lvl");
+      assert resource != null;
+      BufferedReader br = Files.newBufferedReader(Paths.get(resource.toURI()), Charset.defaultCharset());
     lines = readLines(br);
   }
 
@@ -33,7 +40,7 @@ public class LevelBuilder {
   }
 
   public Level createLevel() {
-    Level level = new Level(getWidth(), getHeight());
+    Level level = new Level(getWidth(), getHeight(), levelNumber);
 
     level.setPlayer(createPlayer());
     level.setWalls(createWalls());
@@ -49,14 +56,19 @@ public class LevelBuilder {
     List<Power> powers = new ArrayList<>();
     for (int y = 0; y < lines.size(); y++) {
       String line = lines.get(y);
-      for (int x = 0; x < line.length(); x++)
-        if (line.charAt(x) == 'S') powers.add(new Shield(x, y));
+      for (int x = 0; x < line.length(); x++) {
+        if (line.charAt(x) == 'S') {
+          powers.add(new Shield(x, y));
+        } else if (line.charAt(x) == 'F') {
+          powers.add(new FreezeEnemy(x, y));
+        }
+      }
     }
     return powers;
   }
 
-  private List<Key> createKeys() {
-    List<Key> keys = new ArrayList<>();
+  private Keys createKeys() {
+    Keys keys = new Keys();
 
     for (int y = 0; y < lines.size(); y++) {
       String line = lines.get(y);
@@ -115,8 +127,16 @@ public class LevelBuilder {
     List<Enemy> enemies = new ArrayList<>();
     for (int y = 0; y < lines.size(); y++) {
       String line = lines.get(y);
-      for (int x = 0; x < line.length(); x++)
-        if (line.charAt(x) == 'T') enemies.add(new Troll(x, y));
+      for (int x = 0; x < line.length(); x++) {
+        switch (line.charAt(x)) {
+          case 'T':
+            enemies.add(new Troll(x, y));
+            break;
+          case 'X':
+            enemies.add(new StrongTroll(x, y));
+            break;
+        }
+      }
     }
     return enemies;
   }

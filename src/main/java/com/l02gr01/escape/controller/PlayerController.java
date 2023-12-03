@@ -9,6 +9,9 @@ import com.l02gr01.escape.model.elements.Key;
 import com.l02gr01.escape.model.elements.enemies.Enemy;
 import com.l02gr01.escape.model.elements.powers.Power;
 import com.l02gr01.escape.model.elements.powers.Power.PowerType;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Map.Entry;
 
 public class PlayerController extends GameController {
@@ -37,7 +40,7 @@ public class PlayerController extends GameController {
     private void movePlayer(Position position, long time) {
         if (getModel().isEmpty(position)) {
             getModel().getPlayer().setPosition(position);
-            Key key = getModel().getKey(position);
+            Key key = getModel().getKeys().getKey(position);
             if (key != null) {
                 key.setPickedUp(true);
             }
@@ -68,11 +71,13 @@ public class PlayerController extends GameController {
     }
 
     private void checkPowers(long time) {
+        Map<PowerType, Long> powers = new HashMap<>(getModel().getPlayer().getActivePowers());
         for (Entry<PowerType, Long> power : getModel().getPlayer().getActivePowers().entrySet()) {
             if (time - power.getValue() > powerExpiration) {
-                getModel().getPlayer().removePower(power.getKey());;
+                powers.remove(power.getKey());
             }
         }
+        getModel().getPlayer().setPowers(powers);
     }
 
 }

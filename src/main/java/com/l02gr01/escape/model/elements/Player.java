@@ -54,8 +54,8 @@ public class Player extends Element {
         this.activePowers.put(power.getType(), currentTime);
     }
 
-    public void removePower(PowerType power) {
-        this.activePowers.remove(power);
+    public void setPowers(Map<PowerType, Long> power) {
+        this.activePowers = power;
     }
 
 
