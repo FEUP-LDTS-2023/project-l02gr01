@@ -13,6 +13,7 @@ public class Level {
   private final int levelNumber;
 
   private Player player;
+
   private List<Wall> walls = new ArrayList<Wall>();
   private Keys keys = new Keys();
   private Exit exit = new Exit(5,0);
@@ -20,6 +21,9 @@ public class Level {
   private List<Power> powers = new ArrayList<Power>();
 
   private List<Enemy> enemies = new ArrayList<Enemy>();
+
+  private List<Bullet> bullets = new ArrayList<Bullet>();
+
 
 
 
@@ -91,6 +95,7 @@ public class Level {
     return enemies;
   }
 
+
   public void setEnemies(List<Enemy> enemies) {
     this.enemies = enemies;
   }
@@ -123,6 +128,27 @@ public class Level {
 
   public void removePower(Power power) {
     powers.remove(power);
+  }
+
+
+  public void addBullet(Bullet b){
+    bullets.add(b);
+  }
+  public List<Bullet> getBullets(){
+    return bullets;
+  }
+
+  public void setBullets(List<Bullet> b){
+    bullets = b;
+  }
+
+  public void shoot(){
+    if(player.isBulletAvailable()){
+      // It's possible to now change the damage caused by the bullets in the following line.
+      // This may be useful for new powers that change the power of the bullets
+      bullets.add(new Bullet(player.getPosition().getX(), player.getPosition().getY(), player.getDirection(), 10));
+      player.usedBullet();
+    }
   }
 
   public int getLevelNumber() {

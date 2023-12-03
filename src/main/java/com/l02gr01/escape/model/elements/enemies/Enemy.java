@@ -8,6 +8,9 @@ import com.l02gr01.escape.model.elements.enemies.MovingStrategy.RandomMovingStra
 
 public abstract class Enemy extends Element {
 
+
+  private int life = 40;
+
   int damage;
   char symbol;
   String color;
@@ -32,6 +35,19 @@ public abstract class Enemy extends Element {
   public  char getSymbol(){
     return symbol;
   };
+
+
+  public boolean removeLife(int damage){
+    // Returns true if died. Returns false if still alive.
+    life = life - damage;
+    System.out.println(life);
+    if(life <= 0) {
+      return true;
+    }
+    return false;
+  }
+
+  public abstract char getSymbol();
 
   public String getColor(){
     return color;

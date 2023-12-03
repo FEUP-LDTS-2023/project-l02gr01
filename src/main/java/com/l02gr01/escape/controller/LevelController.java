@@ -22,11 +22,14 @@ public class LevelController extends GameController {
   private final EnemyController enemyController;
   private static final int MAX_LEVEL = 4;
 
+  private final BulletController bulletController;
+
   public LevelController(Level level) {
     super(level);
     this.playerController = new PlayerController(level);
     this.exitController = new ExitController(level);
     this.enemyController = new EnemyController(level);
+    this.bulletController = new BulletController(level);
   }
 
   @Override
@@ -45,6 +48,7 @@ public class LevelController extends GameController {
       playerController.step(game, action, time);
       exitController.step(game, action, time);
       enemyController.step(game, action, time);
+      bulletController.step(game, action, time);
     }
   }
 }
