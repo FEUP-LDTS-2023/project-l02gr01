@@ -28,7 +28,7 @@ class EnemyControllerTest {
 
     @BeforeEach
     void setUp() {
-        level = new Level(15,15);
+        level = new Level(15,15,1);
         player = new Player(5,5);
         enemyController = new EnemyController(level);
         level.setPlayer(player);

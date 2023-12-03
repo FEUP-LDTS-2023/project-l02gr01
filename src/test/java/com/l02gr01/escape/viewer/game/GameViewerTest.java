@@ -26,7 +26,7 @@ class GameViewerTest {
 
     @BeforeEach
     void setUp() {
-        level = new Level(15,15);
+        level = new Level(15,15,1);
         gui = Mockito.mock(GUI.class);
         gameViewer = new GameViewer(level);
 

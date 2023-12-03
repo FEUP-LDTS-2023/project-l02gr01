@@ -22,7 +22,7 @@ public abstract class Event {
     }
 
     public int getPoints(){
-        return (int) (finallevel * 7 - (time / 5 ));
+        return (int) (finallevel * 7L - (time / 5 ));
     }
 
     public abstract String getInfo();

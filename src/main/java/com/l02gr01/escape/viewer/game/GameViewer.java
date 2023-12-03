@@ -4,8 +4,11 @@ import com.l02gr01.escape.gui.GUI;
 import com.l02gr01.escape.model.Level;
 import com.l02gr01.escape.model.Position;
 import com.l02gr01.escape.model.elements.Element;
+import com.l02gr01.escape.model.elements.powers.Power;
 import com.l02gr01.escape.viewer.Viewer;
 import java.util.List;
+
+import static java.lang.Math.max;
 
 public class GameViewer extends Viewer<Level> {
   public GameViewer(Level level) {
@@ -31,8 +34,12 @@ public class GameViewer extends Viewer<Level> {
   }
 
   private <T extends Element> void drawElement(GUI gui, T element, ElementViewer<T> viewer) {
-    //if(element.getPosition().iswithindistance(getModel().getPlayer().getPosition(), 3)){
+    int n = 3;
+    if (getModel().getPlayer().getActivePowers().containsKey(Power.PowerType.SUPER_VISION)) {
+      n = max(getModel().getHeight(), getModel().getWidth());
+    }
+    if(element.getPosition().iswithindistance(getModel().getPlayer().getPosition(), n)){
       viewer.draw(element, gui);
-    //}
+    }
   }
 }

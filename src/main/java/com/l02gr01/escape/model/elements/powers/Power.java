@@ -8,7 +8,7 @@ public abstract class Power extends Element {
     super(x, y);
   }
 
-  public enum PowerType {SHIELD, FREEZE_ENEMY}
+  public enum PowerType {SHIELD, FREEZE_ENEMY, SUPER_VISION}
 
   public abstract PowerType getType();
 

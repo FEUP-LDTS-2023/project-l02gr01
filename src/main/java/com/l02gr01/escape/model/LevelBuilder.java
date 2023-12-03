@@ -7,6 +7,8 @@ import com.l02gr01.escape.model.elements.enemies.Troll;
 import com.l02gr01.escape.model.elements.powers.FreezeEnemy;
 import com.l02gr01.escape.model.elements.powers.Power;
 import com.l02gr01.escape.model.elements.powers.Shield;
+import com.l02gr01.escape.model.elements.powers.SuperVision;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -61,6 +63,8 @@ public class LevelBuilder {
           powers.add(new Shield(x, y));
         } else if (line.charAt(x) == 'F') {
           powers.add(new FreezeEnemy(x, y));
+        } else if (line.charAt(x) == 'V') {
+          powers.add(new SuperVision(x,y));
         }
       }
     }
