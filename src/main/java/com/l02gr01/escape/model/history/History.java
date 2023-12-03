@@ -36,6 +36,7 @@ public class History {
 
     public void sort() {
         history.sort(Comparator.comparingInt(Event::getPoints).reversed());
+    }
   
     public long getStartTime() {
         return lastStartTime;

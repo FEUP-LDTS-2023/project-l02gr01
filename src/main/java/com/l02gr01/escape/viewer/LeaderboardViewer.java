@@ -18,7 +18,7 @@ public class LeaderboardViewer extends Viewer<Leaderboard> {
         gui.drawText(new Position(6,3), "Name", "#FFFFFF");
         gui.drawText(new Position(17,3), "Level", "#FFFFFF");
         gui.drawText(new Position(25,3), "Score", "#FFFFFF");
-        for (int i = 1; i < 11 && i < History.getInstance().listEvents().size(); i++) {
+        for (int i = 1; i < 11 && i <= History.getInstance().listEvents().size(); i++) {
             String username = History.getInstance().listEvents().get(i-1).getName();
             int finalLevel = History.getInstance().listEvents().get(i-1).getFinallevel();
             int score = History.getInstance().listEvents().get(i-1).getPoints();
