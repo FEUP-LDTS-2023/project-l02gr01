@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class Player extends Element {
     private int health;
@@ -16,7 +17,7 @@ public class Player extends Element {
 
     private Position lastdirection = new Position(1,0);
 
-    Map<PowerType, Long> activePowers = new HashMap<>();
+    private Map<PowerType, Long> activePowers = new ConcurrentHashMap<>();
 
     public Player(int x, int y) {
         super(x, y);
