@@ -52,9 +52,10 @@ public class BulletController extends GameController{
 
                 // Chack if it contacts with walls
                 for(Wall w : getModel().getWalls()){
-                    if(w.getPosition().equals(b.getPosition())){
-                        contact = true;
-                    }
+                  if (w.getPosition().equals(b.getPosition())) {
+                    contact = true;
+                    break;
+                  }
                 }
                 if(contact){
                     finalbullets.remove(b);

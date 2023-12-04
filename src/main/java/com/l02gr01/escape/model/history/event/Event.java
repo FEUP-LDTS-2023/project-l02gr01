@@ -1,9 +1,9 @@
 package com.l02gr01.escape.model.history.event;
 
 public abstract class Event {
-    private String name;
-    private long time;
-    private int finallevel;
+    private final String name;
+    private final long time;
+    private final int finallevel;
 
 
     public Event(String name, long time, int finallevel){

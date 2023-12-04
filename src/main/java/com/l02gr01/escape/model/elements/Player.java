@@ -68,10 +68,7 @@ public class Player extends Element {
 
 
     public boolean isBulletAvailable(){
-        if(bulletsAvailable > 0){
-            return true;
-        }
-        return false;
+      return bulletsAvailable > 0;
     }
 
 

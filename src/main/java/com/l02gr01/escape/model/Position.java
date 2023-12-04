@@ -62,9 +62,6 @@ public class Position {
   }
 
   public boolean iswithindistance(Position center, int n){
-    if(Math.abs(getX() - center.getX()) <= n && Math.abs(getY() - center.getY()) <= n){
-      return true;
-    }
-    return false;
+    return Math.abs(getX() - center.getX()) <= n && Math.abs(getY() - center.getY()) <= n;
   }
 }

@@ -10,6 +10,7 @@ import com.l02gr01.escape.model.elements.Wall;
 import com.l02gr01.escape.model.elements.enemies.Enemy;
 import com.l02gr01.escape.model.elements.enemies.MovingStrategy.RandomMovingStrategy;
 import com.l02gr01.escape.model.elements.enemies.Troll;
+import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -41,7 +42,7 @@ class EnemyControllerTest {
         Mockito.when(enemy.getStrategy()).thenReturn(new RandomMovingStrategy());
         Mockito.when(enemy.getPosition()).thenReturn(new Position(1, 1));
 
-        level.setEnemies(Arrays.asList(enemy));
+        level.setEnemies(List.of(enemy));
 
         enemyController.step(game, GUI.ACTION.NONE, 1000);
 
@@ -53,7 +54,7 @@ class EnemyControllerTest {
     @Test
     void testOnlyMonsterMove() throws IOException {
         Troll troll = new Troll(2,2);
-        level.setEnemies(Arrays.asList(troll));
+        level.setEnemies(List.of(troll));
         level.setWalls(Arrays.asList(new Wall(3,2), new Wall(2,3), new Wall(2,1)));
 
         long time = 0;
