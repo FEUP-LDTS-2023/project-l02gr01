@@ -1,7 +1,5 @@
 package com.l02gr01.escape.model.history;
 
-import com.l02gr01.escape.states.State;
-
 public class User {
 
     private static final User instance = new User();

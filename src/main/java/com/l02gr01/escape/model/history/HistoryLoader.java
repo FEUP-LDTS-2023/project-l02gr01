@@ -1,13 +1,11 @@
 package com.l02gr01.escape.model.history;
 
 import com.google.common.base.Splitter;
-import com.l02gr01.escape.model.LevelBuilder;
 import com.l02gr01.escape.model.history.event.Event;
 import com.l02gr01.escape.model.history.event.Loss;
 import com.l02gr01.escape.model.history.event.Win;
 
 import java.io.*;
-import java.net.URISyntaxException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -16,7 +14,7 @@ import java.util.List;
 
 public class HistoryLoader {
 
-    public void loadMemory() throws URISyntaxException, IOException {
+    public void loadMemory() throws IOException {
 
         String rootPath = new File(System.getProperty("user.dir")).getPath();
         String fileLocation = rootPath + "/src/main/resources/eventResults.txt";
@@ -49,7 +47,7 @@ public class HistoryLoader {
         }
     }
 
-    public void storeMemory(List<Event> events) throws URISyntaxException, IOException {
+    public void storeMemory(List<Event> events) throws IOException {
 
         String rootPath = new File(System.getProperty("user.dir")).getPath();
         String fileLocation = rootPath + "/src/main/resources/eventResults.txt";
@@ -66,9 +64,9 @@ public class HistoryLoader {
 
             String parsedEvent = "";
             if (event instanceof Win) {
-                parsedEvent = String.format("Win,%s,%d,%d", event.getName(), event.getTime(), event.getFinallevel());
+                parsedEvent = String.format("Win,%s,%d,%d", event.getName(), event.getTime(), event.getFinalLevel());
             } else if (event instanceof Loss) {
-                parsedEvent = String.format("Loss,%s,%d,%d,%d", event.getName(), event.getTime(), event.getFinallevel(), ((Loss) event).getKeysgrabbed());
+                parsedEvent = String.format("Loss,%s,%d,%d,%d", event.getName(), event.getTime(), event.getFinalLevel(), ((Loss) event).getKeysgrabbed());
             }
 
             bw.write(parsedEvent);

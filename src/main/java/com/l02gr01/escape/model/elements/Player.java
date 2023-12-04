@@ -12,7 +12,7 @@ public class Player extends Element {
     private int health;
     private int bulletsAvailable = 5;
 
-    private Position lastdirection = new Position(1,0);
+    private Position lastDirection = new Position(1,0);
 
     // Map active power to expiration time
     private Map<PowerType, Long> activePowers = new ConcurrentHashMap<>();
@@ -26,13 +26,13 @@ public class Player extends Element {
     public void setPosition(Position position){
         int xd = position.getX() - getPosition().getX();
         int yd = position.getY() - getPosition().getY();
-        lastdirection = new Position(xd, yd);
+        lastDirection = new Position(xd, yd);
 
         super.setPosition(position);
     }
 
     public Position getDirection(){
-        return lastdirection;
+        return lastDirection;
     }
 
     public int getHealth() {

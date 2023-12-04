@@ -4,7 +4,6 @@ import com.l02gr01.escape.Game;
 import com.l02gr01.escape.gui.GUI;
 import com.l02gr01.escape.model.Level;
 import com.l02gr01.escape.model.Position;
-import com.l02gr01.escape.model.elements.Exit;
 import com.l02gr01.escape.model.elements.Player;
 import com.l02gr01.escape.model.elements.Wall;
 import com.l02gr01.escape.model.elements.enemies.Enemy;
@@ -13,7 +12,6 @@ import com.l02gr01.escape.model.elements.enemies.Troll;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 
 import java.io.IOException;

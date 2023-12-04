@@ -50,7 +50,7 @@ public class BulletController extends GameController{
                 }
                 getModel().setEnemies(enemiesfinal);
 
-                // Chack if it contacts with walls
+                // Check if it contacts with walls
                 for(Wall w : getModel().getWalls()){
                   if (w.getPosition().equals(b.getPosition())) {
                     contact = true;

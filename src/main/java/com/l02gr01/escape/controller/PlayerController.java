@@ -4,7 +4,6 @@ import com.l02gr01.escape.Game;
 import com.l02gr01.escape.gui.GUI;
 import com.l02gr01.escape.model.Level;
 import com.l02gr01.escape.model.Position;
-import com.l02gr01.escape.model.elements.Bullet;
 import com.l02gr01.escape.model.elements.Key;
 import com.l02gr01.escape.model.elements.enemies.Enemy;
 import com.l02gr01.escape.model.elements.powers.Power;
