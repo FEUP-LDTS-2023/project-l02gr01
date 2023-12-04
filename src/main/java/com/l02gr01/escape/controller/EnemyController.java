@@ -6,7 +6,6 @@ import com.l02gr01.escape.gui.GUI;
 import com.l02gr01.escape.model.Level;
 import com.l02gr01.escape.model.elements.enemies.Enemy;
 import com.l02gr01.escape.model.elements.powers.Power.PowerType;
-import java.io.IOException;
 
 public class EnemyController extends GameController {
     private long lastMovement;

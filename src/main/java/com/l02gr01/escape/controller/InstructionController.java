@@ -6,9 +6,6 @@ import com.l02gr01.escape.model.Instruction;
 import com.l02gr01.escape.model.Menu;
 import com.l02gr01.escape.states.MenuState;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
-
 public class InstructionController extends Controller<Instruction> {
 
     public InstructionController(Instruction model) {
