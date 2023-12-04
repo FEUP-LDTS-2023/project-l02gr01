@@ -1,13 +1,10 @@
 package com.l02gr01.escape.model.elements;
 
-import com.l02gr01.escape.controller.BulletController;
 import com.l02gr01.escape.model.Position;
 import com.l02gr01.escape.model.elements.powers.Power;
 import com.l02gr01.escape.model.elements.powers.Power.PowerType;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -17,6 +14,7 @@ public class Player extends Element {
 
     private Position lastdirection = new Position(1,0);
 
+    // Map active power to expiration time
     private Map<PowerType, Long> activePowers = new ConcurrentHashMap<>();
 
     public Player(int x, int y) {
