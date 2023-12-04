@@ -1,6 +1,5 @@
 package com.l02gr01.escape.viewer;
 
-import com.googlecode.lanterna.gui2.TextBox;
 import com.l02gr01.escape.gui.GUI;
 import com.l02gr01.escape.model.Position;
 import com.l02gr01.escape.model.PreGame;

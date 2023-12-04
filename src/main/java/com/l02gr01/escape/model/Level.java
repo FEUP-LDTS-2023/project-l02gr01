@@ -14,15 +14,15 @@ public class Level {
 
   private Player player;
 
-  private List<Wall> walls = new ArrayList<Wall>();
+  private List<Wall> walls = new ArrayList<>();
   private Keys keys = new Keys();
   private Exit exit = new Exit(5,0);
 
-  private List<Power> powers = new ArrayList<Power>();
+  private List<Power> powers = new ArrayList<>();
 
-  private List<Enemy> enemies = new ArrayList<Enemy>();
+  private List<Enemy> enemies = new ArrayList<>();
 
-  private List<Bullet> bullets = new ArrayList<Bullet>();
+  private List<Bullet> bullets = new ArrayList<>();
 
 
 

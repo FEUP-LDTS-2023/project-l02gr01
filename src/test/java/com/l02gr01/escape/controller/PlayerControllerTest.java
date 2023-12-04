@@ -8,10 +8,9 @@ import com.l02gr01.escape.model.elements.Player;
 import com.l02gr01.escape.model.elements.Wall;
 import com.l02gr01.escape.model.elements.enemies.Troll;
 import com.l02gr01.escape.model.elements.powers.Shield;
+import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -56,28 +55,28 @@ class PlayerControllerTest {
 
     @Test
     void testMoveHeroWithWall() {
-        level.setWalls(Arrays.asList(new Wall(5,6)));
+        level.setWalls(List.of(new Wall(5, 6)));
         playerController.movePlayerDown(100);
         assertEquals(player.getPosition(), new Position(5, 5));
     }
 
     @Test
     void testPickUpKey() {
-        level.getKeys().setKeys(Arrays.asList(new Key(4,5)));
+        level.getKeys().setKeys(List.of(new Key(4, 5)));
         playerController.movePlayerLeft(100);
         assertTrue(level.getKeys().getList().get(0).isPickedUp());
     }
 
     @Test
     void testDamage() {
-        level.setEnemies(Arrays.asList(new Troll(6,5)));
+        level.setEnemies(List.of(new Troll(6, 5)));
         playerController.movePlayerRight(100);
         assertEquals(player.getHealth(), 90);
     }
 
     @Test
     void testShield() {
-        level.setEnemies(Arrays.asList(new Troll(6,5)));
+        level.setEnemies(List.of(new Troll(6, 5)));
         player.addPower(new Shield(4,5), 100);
         playerController.movePlayerLeft(100);
         assertEquals(1, player.getActivePowers().size());

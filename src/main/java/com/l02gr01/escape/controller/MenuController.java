@@ -1,10 +1,8 @@
 package com.l02gr01.escape.controller;
 
 import com.l02gr01.escape.Game;
-import com.l02gr01.escape.audio.AudioManager;
 import com.l02gr01.escape.gui.GUI;
 import com.l02gr01.escape.model.*;
-import com.l02gr01.escape.states.GameState;
 import com.l02gr01.escape.states.InstructionState;
 import com.l02gr01.escape.states.LeaderBoardState;
 import com.l02gr01.escape.states.PreGameState;

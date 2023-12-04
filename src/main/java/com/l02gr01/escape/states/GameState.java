@@ -1,6 +1,5 @@
 package com.l02gr01.escape.states;
 
-import com.l02gr01.escape.audio.AudioManager;
 import com.l02gr01.escape.controller.Controller;
 import com.l02gr01.escape.controller.LevelController;
 import com.l02gr01.escape.model.Level;

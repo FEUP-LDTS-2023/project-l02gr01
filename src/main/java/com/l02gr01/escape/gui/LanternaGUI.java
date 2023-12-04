@@ -12,7 +12,6 @@ import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
 import com.l02gr01.escape.model.Position;
-import com.l02gr01.escape.model.elements.Key;
 import com.l02gr01.escape.model.elements.Player;
 import com.l02gr01.escape.model.elements.enemies.Enemy;
 import com.l02gr01.escape.model.elements.powers.Power;
@@ -48,8 +47,7 @@ public class LanternaGUI implements GUI{
                 .setInitialTerminalSize(terminalSize);
         terminalFactory.setForceAWTOverSwing(true);
         terminalFactory.setTerminalEmulatorFontConfiguration(fontConfig);
-        Terminal terminal = terminalFactory.createTerminal();
-        return terminal;
+      return terminalFactory.createTerminal();
     }
 
     private Screen createScreen(Terminal terminal) throws IOException {
@@ -71,8 +69,7 @@ public class LanternaGUI implements GUI{
         ge.registerFont(font);
 
         Font loadedFont = font.deriveFont(Font.PLAIN, 40);
-        AWTTerminalFontConfiguration fontConfig = AWTTerminalFontConfiguration.newInstance(loadedFont);
-        return fontConfig;
+        return AWTTerminalFontConfiguration.newInstance(loadedFont);
     }
 
     @Override

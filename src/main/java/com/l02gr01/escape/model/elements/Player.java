@@ -1,22 +1,21 @@
 package com.l02gr01.escape.model.elements;
 
-import com.l02gr01.escape.controller.BulletController;
 import com.l02gr01.escape.model.Position;
 import com.l02gr01.escape.model.elements.powers.Power;
 import com.l02gr01.escape.model.elements.powers.Power.PowerType;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class Player extends Element {
     private int health;
     private int bulletsAvailable = 5;
 
-    private Position lastdirection = new Position(1,0);
+    private Position lastDirection = new Position(1,0);
 
-    Map<PowerType, Long> activePowers = new HashMap<>();
+    // Map active power to expiration time
+    private Map<PowerType, Long> activePowers = new ConcurrentHashMap<>();
 
     public Player(int x, int y) {
         super(x, y);
@@ -27,13 +26,13 @@ public class Player extends Element {
     public void setPosition(Position position){
         int xd = position.getX() - getPosition().getX();
         int yd = position.getY() - getPosition().getY();
-        lastdirection = new Position(xd, yd);
+        lastDirection = new Position(xd, yd);
 
         super.setPosition(position);
     }
 
     public Position getDirection(){
-        return lastdirection;
+        return lastDirection;
     }
 
     public int getHealth() {
@@ -69,10 +68,7 @@ public class Player extends Element {
 
 
     public boolean isBulletAvailable(){
-        if(bulletsAvailable > 0){
-            return true;
-        }
-        return false;
+      return bulletsAvailable > 0;
     }
 
 

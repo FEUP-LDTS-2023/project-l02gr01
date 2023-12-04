@@ -10,7 +10,6 @@ import com.l02gr01.escape.model.elements.powers.Shield;
 import com.l02gr01.escape.model.elements.powers.SuperVision;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -19,8 +18,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-
-import static java.nio.charset.StandardCharsets.UTF_8;
 
 public class LevelBuilder {
   private final List<String> lines;

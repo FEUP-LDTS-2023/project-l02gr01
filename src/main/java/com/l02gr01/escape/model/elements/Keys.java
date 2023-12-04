@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Keys {
-    private List<Key> keys = new ArrayList<Key>();
+    private List<Key> keys = new ArrayList<>();
 
 
     public void add(Key key){

@@ -20,7 +20,7 @@ public class LeaderboardViewer extends Viewer<Leaderboard> {
         gui.drawText(new Position(25,3), "Score", "#FFFFFF");
         for (int i = 1; i < 11 && i <= History.getInstance().listEvents().size(); i++) {
             String username = History.getInstance().listEvents().get(i-1).getName();
-            int finalLevel = History.getInstance().listEvents().get(i-1).getFinallevel();
+            int finalLevel = History.getInstance().listEvents().get(i-1).getFinalLevel();
             int score = History.getInstance().listEvents().get(i-1).getPoints();
 
             gui.drawText(new Position(0, 3+i), i + ".", "#FFFFFF");

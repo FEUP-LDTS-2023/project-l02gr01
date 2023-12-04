@@ -4,6 +4,7 @@ import com.l02gr01.escape.model.elements.Exit;
 import com.l02gr01.escape.model.elements.Key;
 import com.l02gr01.escape.model.elements.Wall;
 import com.l02gr01.escape.model.elements.enemies.Troll;
+import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -54,7 +55,7 @@ class LevelTest {
     @Test
     void testEnemy() {
         Troll troll = new Troll(9,10);
-        level.setEnemies(Arrays.asList(troll));
+        level.setEnemies(List.of(troll));
         assertEquals(level.getEnemies().get(0).getPosition(), new Position(9,10));
         assertNotNull(level.getEnemy(new Position(9,10)));
         assertNull(level.getEnemy(new Position(0,0)));

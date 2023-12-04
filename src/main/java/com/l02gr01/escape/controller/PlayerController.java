@@ -4,7 +4,6 @@ import com.l02gr01.escape.Game;
 import com.l02gr01.escape.gui.GUI;
 import com.l02gr01.escape.model.Level;
 import com.l02gr01.escape.model.Position;
-import com.l02gr01.escape.model.elements.Bullet;
 import com.l02gr01.escape.model.elements.Key;
 import com.l02gr01.escape.model.elements.enemies.Enemy;
 import com.l02gr01.escape.model.elements.powers.Power;
@@ -15,7 +14,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 public class PlayerController extends GameController {
-    final long powerExpiration = 5000;
 
     public PlayerController(Level level) {
         super(level);
@@ -50,10 +48,7 @@ public class PlayerController extends GameController {
             }
             Power power = getModel().getPower(position);
             if (power != null) {
-                if (power.getType() == PowerType.SUPER_VISION) {
-                    time -= 3500;
-                }
-                getModel().getPlayer().addPower(power, time);
+                getModel().getPlayer().addPower(power, time + power.getPowerLength());
                 getModel().removePower(power);
             }
         }
@@ -76,7 +71,7 @@ public class PlayerController extends GameController {
     private void checkPowers(long time) {
         Map<PowerType, Long> powers = new HashMap<>(getModel().getPlayer().getActivePowers());
         for (Entry<PowerType, Long> power : getModel().getPlayer().getActivePowers().entrySet()) {
-            if (time - power.getValue() > powerExpiration) {
+            if (time >= power.getValue()) {
                 powers.remove(power.getKey());
             }
         }

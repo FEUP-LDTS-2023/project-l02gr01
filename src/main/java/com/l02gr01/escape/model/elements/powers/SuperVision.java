@@ -22,4 +22,9 @@ public class SuperVision extends Power {
     public String getColor() {
         return "#ff00ff";
     }
+
+    @Override
+    public Long getPowerLength() {
+        return 5000L;
+    }
 }

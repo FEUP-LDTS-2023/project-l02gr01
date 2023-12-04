@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class Leaderboard {
 
-    HistoryLoader historyLoader = new HistoryLoader();
+    final HistoryLoader historyLoader = new HistoryLoader();
 
     public Leaderboard() throws URISyntaxException, IOException {
         historyLoader.loadMemory();

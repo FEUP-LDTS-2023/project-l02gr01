@@ -3,7 +3,6 @@ package com.l02gr01.escape.model.history;
 import com.l02gr01.escape.model.history.event.Event;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -20,7 +19,7 @@ public class History {
 
     private History(){
         // Load history from file
-        history = new ArrayList<Event>();
+        history = new ArrayList<>();
     }
 
     public List<Event> listEvents(){
