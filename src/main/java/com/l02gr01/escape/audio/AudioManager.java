@@ -32,7 +32,7 @@ public class AudioManager {
       AudioInputStream audioInputStream =
           AudioSystem.getAudioInputStream(getClass().getClassLoader().getResourceAsStream(AUDIO_DIRECTORY + file));
       Clip clip = AudioSystem.getClip();
-//      clip.open(audioInputStream);
+      clip.open(audioInputStream);
       clip.loop(Clip.LOOP_CONTINUOUSLY);
       clip.start();
       activeSounds.add(clip);
