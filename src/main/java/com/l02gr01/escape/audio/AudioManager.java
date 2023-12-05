@@ -1,6 +1,7 @@
 package com.l02gr01.escape.audio;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -42,9 +43,11 @@ public class AudioManager {
   }
 
   public void stopAllSounds() {
-    for (Clip sound : activeSounds) {
+    Iterator<Clip> iterator = activeSounds.iterator();
+    while (iterator.hasNext()) {
+      Clip sound = iterator.next();
       sound.stop();
-      activeSounds.remove(sound);
+      iterator.remove();
     }
   }
 }

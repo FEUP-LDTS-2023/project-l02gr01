@@ -3,7 +3,6 @@ package com.l02gr01.escape.viewer.game;
 import com.l02gr01.escape.gui.GUI;
 import com.l02gr01.escape.model.Level;
 import com.l02gr01.escape.model.Position;
-import com.l02gr01.escape.model.elements.Exit;
 import com.l02gr01.escape.model.elements.Key;
 import com.l02gr01.escape.model.elements.Player;
 import com.l02gr01.escape.model.elements.Wall;
@@ -26,7 +25,7 @@ class GameViewerTest {
 
     @BeforeEach
     void setUp() {
-        level = new Level(15,15);
+        level = new Level(15,15,1);
         gui = Mockito.mock(GUI.class);
         gameViewer = new GameViewer(level);
 
