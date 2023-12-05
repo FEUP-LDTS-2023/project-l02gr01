@@ -2,8 +2,6 @@ package com.l02gr01.escape.model;
 
 import com.l02gr01.escape.model.elements.*;
 import com.l02gr01.escape.model.elements.enemies.Enemy;
-import com.l02gr01.escape.model.elements.enemies.StrongTroll;
-import com.l02gr01.escape.model.elements.enemies.Troll;
 import com.l02gr01.escape.model.elements.powers.FreezeEnemy;
 import com.l02gr01.escape.model.elements.powers.Power;
 import com.l02gr01.escape.model.elements.powers.Shield;
@@ -131,10 +129,10 @@ public class LevelBuilder {
       for (int x = 0; x < line.length(); x++) {
         switch (line.charAt(x)) {
           case 'T':
-            enemies.add(new Troll(x, y));
+            enemies.add(new Enemy(x, y, 10, "#116909"));
             break;
           case 'X':
-            enemies.add(new StrongTroll(x, y));
+            enemies.add(new Enemy(x, y,20,"#750f04"));
             break;
         }
       }

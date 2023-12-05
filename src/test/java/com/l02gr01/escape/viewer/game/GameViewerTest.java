@@ -7,7 +7,6 @@ import com.l02gr01.escape.model.elements.Key;
 import com.l02gr01.escape.model.elements.Player;
 import com.l02gr01.escape.model.elements.Wall;
 import com.l02gr01.escape.model.elements.enemies.Enemy;
-import com.l02gr01.escape.model.elements.enemies.Troll;
 import com.l02gr01.escape.model.elements.powers.Power;
 import com.l02gr01.escape.model.elements.powers.Shield;
 import org.junit.jupiter.api.BeforeEach;
@@ -33,8 +32,8 @@ class GameViewerTest {
         level.setPowers(Arrays.asList(new Shield(1,3), new Shield(2,5)));
         level.setWalls(Arrays.asList(new Wall(1,7), new Wall(9,9)));
         level.getKeys().setKeys(Arrays.asList(new Key(8,8), new Key(7,7)));
-        level.setEnemies(Arrays.asList(new Troll(1,2), new Troll(0,0)));
-        level.setEnemies(Arrays.asList(new Troll(1,2), new Troll(0,0)));
+        level.setEnemies(Arrays.asList(new Enemy(1,2), new Enemy(0,0)));
+        level.setEnemies(Arrays.asList(new Enemy(1,2), new Enemy(0,0)));
         level.setPlayer(new Player(5,5));
 
     }

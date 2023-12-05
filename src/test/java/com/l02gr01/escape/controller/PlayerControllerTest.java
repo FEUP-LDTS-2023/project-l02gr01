@@ -6,7 +6,7 @@ import com.l02gr01.escape.model.elements.Exit;
 import com.l02gr01.escape.model.elements.Key;
 import com.l02gr01.escape.model.elements.Player;
 import com.l02gr01.escape.model.elements.Wall;
-import com.l02gr01.escape.model.elements.enemies.Troll;
+import com.l02gr01.escape.model.elements.enemies.Enemy;
 import com.l02gr01.escape.model.elements.powers.Shield;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
@@ -69,14 +69,14 @@ class PlayerControllerTest {
 
     @Test
     void testDamage() {
-        level.setEnemies(List.of(new Troll(6, 5)));
+        level.setEnemies(List.of(new Enemy(6, 5)));
         playerController.movePlayerRight(100);
         assertEquals(player.getHealth(), 90);
     }
 
     @Test
     void testShield() {
-        level.setEnemies(List.of(new Troll(6, 5)));
+        level.setEnemies(List.of(new Enemy(6, 5)));
         player.addPower(new Shield(4,5), 100);
         playerController.movePlayerLeft(100);
         assertEquals(1, player.getActivePowers().size());

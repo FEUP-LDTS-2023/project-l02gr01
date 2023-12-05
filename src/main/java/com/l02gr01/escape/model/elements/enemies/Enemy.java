@@ -4,21 +4,25 @@ import com.l02gr01.escape.model.elements.Element;
 import com.l02gr01.escape.model.elements.enemies.MovingStrategy.MovingStrategy;
 import com.l02gr01.escape.model.elements.enemies.MovingStrategy.RandomMovingStrategy;
 
-public abstract class Enemy extends Element {
+public class Enemy extends Element {
 
 
   private int life = 40;
 
   final int damage;
-  final char symbol;
   final String color;
 
   final MovingStrategy strategy = new RandomMovingStrategy();  // Just for example
 
-  public Enemy(int x, int y, int damage, char symbol, String color) {
+  public Enemy(int x, int y){
+    // Supposed to be a troll
+    super(x, y);
+    this.damage = 10;
+    this.color = "#116909";
+  }
+  public Enemy(int x, int y, int damage, String color) {
     super(x, y);
     this.damage = damage;
-    this.symbol = symbol;
     this.color = color;
   }
 
@@ -30,9 +34,7 @@ public abstract class Enemy extends Element {
     return damage;
   }
 
-  public  char getSymbol(){
-    return symbol;
-  }
+
 
 
   public boolean removeLife(int damage){

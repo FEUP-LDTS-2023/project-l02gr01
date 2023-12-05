@@ -8,7 +8,7 @@ import com.l02gr01.escape.model.elements.Player;
 import com.l02gr01.escape.model.elements.Wall;
 import com.l02gr01.escape.model.elements.enemies.Enemy;
 import com.l02gr01.escape.model.elements.enemies.MovingStrategy.RandomMovingStrategy;
-import com.l02gr01.escape.model.elements.enemies.Troll;
+
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -51,7 +51,7 @@ class EnemyControllerTest {
 
     @Test
     void testOnlyMonsterMove() throws IOException {
-        Troll troll = new Troll(2,2);
+        Enemy troll = new Enemy(2,2);
         level.setEnemies(List.of(troll));
         level.setWalls(Arrays.asList(new Wall(3,2), new Wall(2,3), new Wall(2,1)));
 

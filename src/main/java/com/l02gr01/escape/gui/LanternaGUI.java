@@ -141,7 +141,7 @@ public class LanternaGUI implements GUI{
 
     @Override
     public void drawEnemy(Enemy enemy) {
-        drawCharacter(enemy.getPosition().getX(), enemy.getPosition().getY(), enemy.getSymbol(), enemy.getColor());
+        drawCharacter(enemy.getPosition().getX(), enemy.getPosition().getY(), '&', enemy.getColor());
     }
 
     @Override

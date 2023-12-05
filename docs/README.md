@@ -173,6 +173,36 @@ movement for enemies.
 
 --- 
 
+### Reading User Name at Pre-Game
+
+**Problem in Context**
+
+We wanted to receive the name of the player before game start. 
+However, we didn't want to create a form using the lanterna given methods. Therefore, we were dependent
+of reading the characters pressed on the keyboard.
+
+**The Pattern**
+
+To implement this functionality, we decided to use a modification of the Observer Pattern.
+We also used the singleton pattern.
+The other options we were considering required a lot of code for single use.
+
+**Implementation**
+
+We are receiving the keyboard characters at the Lanterna GUI and sending them to TextManipulation, a class that implements the singleton pattern.
+If there is some place in the game that has signaled interest in reading text, it stores it in a class variable.
+After each write, the observer (usually, the PreGame class) is informed of the changes and stores it in her own variable.
+In the end, the observer can state his disinteress on continuing reading characters.
+
+(There can only be one observer in our implementation, which fits well on our game.)
+
+**Consequences**
+
+Using this pattern, the task of reading characters from the user's keyboard becomes a trivial functionality (the class object just needs to be signaled as observer of the TextManipulation singleton)
+
+
+---
+
 We also applied the Singleton to the Game class, to guarantee that there is only one Game running at a time.
 
 In the rest of the project, we tried to follow the SOLID principles, making use of polimorphism and other good practices.

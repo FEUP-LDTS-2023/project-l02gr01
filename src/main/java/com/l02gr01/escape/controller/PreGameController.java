@@ -20,7 +20,7 @@ public class PreGameController extends Controller<PreGame> {
     public void step(Game game, GUI.ACTION action, long time) throws IOException, URISyntaxException {
         if(action == GUI.ACTION.SELECT){
             User.getInstance().setUsername(getModel().getName());
-            game.setState(new GameState(new LevelBuilder(4)));
+            game.setState(new GameState(new LevelBuilder(1)));
             History.getInstance().setStartTime(time);
         }
 

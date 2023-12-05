@@ -15,7 +15,7 @@ public class Game {
 
     private Game() throws IOException, URISyntaxException, FontFormatException {
         // Add singleton logic
-        this.gui = new LanternaGUI(25, 25);
+        this.gui = new LanternaGUI(30, 25);
         this.state = new MenuState(new Menu());
     }
 
