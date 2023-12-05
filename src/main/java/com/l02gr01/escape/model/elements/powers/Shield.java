@@ -22,4 +22,9 @@ public class Shield extends Power {
   public String getColor() {
     return "#a894ff";
   }
+
+  @Override
+  public Long getPowerLength() {
+    return 10000L;
+  }
 }

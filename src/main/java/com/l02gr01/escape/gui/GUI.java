@@ -26,7 +26,9 @@ public interface GUI {
 
     void drawEnemy(Enemy enemy);
 
+    void drawBullet(Position position);
+
     void drawPower(Power power);
 
-    enum ACTION {UP, RIGHT, DOWN, LEFT, NONE, QUIT, SELECT}
+    enum ACTION {UP, RIGHT, DOWN, LEFT, NONE, QUIT, TAB, SELECT}
 }

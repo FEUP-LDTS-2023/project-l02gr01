@@ -4,7 +4,6 @@ import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.screen.Screen;
 import com.l02gr01.escape.model.Position;
-import com.l02gr01.escape.model.elements.Exit;
 import com.l02gr01.escape.model.elements.Player;
 import com.l02gr01.escape.model.elements.powers.Shield;
 import org.junit.jupiter.api.BeforeEach;

@@ -22,4 +22,9 @@ public class FreezeEnemy extends Power {
   public String getColor() {
     return "#03fbff";
   }
+
+  @Override
+  public Long getPowerLength() {
+    return 10000L;
+  }
 }

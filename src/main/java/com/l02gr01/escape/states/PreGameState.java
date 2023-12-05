@@ -12,12 +12,12 @@ public class PreGameState extends State<PreGame> {
     }
 
     @Override
-    protected Viewer getViewer() {
+    protected Viewer<PreGame> getViewer() {
         return new PreGameViewer(getModel());
     }
 
     @Override
-    protected Controller getController() {
+    protected Controller<PreGame> getController() {
         return new PreGameController(getModel());
     }
 }

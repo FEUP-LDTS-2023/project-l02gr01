@@ -47,8 +47,7 @@ public class LanternaGUI implements GUI{
                 .setInitialTerminalSize(terminalSize);
         terminalFactory.setForceAWTOverSwing(true);
         terminalFactory.setTerminalEmulatorFontConfiguration(fontConfig);
-        Terminal terminal = terminalFactory.createTerminal();
-        return terminal;
+      return terminalFactory.createTerminal();
     }
 
     private Screen createScreen(Terminal terminal) throws IOException {
@@ -70,8 +69,7 @@ public class LanternaGUI implements GUI{
         ge.registerFont(font);
 
         Font loadedFont = font.deriveFont(Font.PLAIN, 40);
-        AWTTerminalFontConfiguration fontConfig = AWTTerminalFontConfiguration.newInstance(loadedFont);
-        return fontConfig;
+        return AWTTerminalFontConfiguration.newInstance(loadedFont);
     }
 
     @Override
@@ -88,6 +86,8 @@ public class LanternaGUI implements GUI{
         if (keyStroke.getKeyType() == KeyType.ArrowLeft) return ACTION.LEFT;
 
         if (keyStroke.getKeyType() == KeyType.Enter) return ACTION.SELECT;
+        if (keyStroke.getKeyType() == KeyType.Tab) return ACTION.TAB;
+
 
         return ACTION.NONE;
     }
@@ -147,6 +147,12 @@ public class LanternaGUI implements GUI{
     @Override
     public void drawPower(Power power) {
         drawCharacter(power.getPosition().getX(), power.getPosition().getY(), power.getSymbol(), power.getColor());
+    }
+
+    @Override
+    public void drawBullet(Position position){
+        String exitColor = "#636361";
+        drawCharacter(position.getX(), position.getY(), '*', exitColor);
     }
 
     @Override

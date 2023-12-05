@@ -14,7 +14,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 public class PlayerController extends GameController {
-    final long powerExpiration = 5000;
 
     public PlayerController(Level level) {
         super(level);
@@ -49,10 +48,14 @@ public class PlayerController extends GameController {
             }
             Power power = getModel().getPower(position);
             if (power != null) {
-                getModel().getPlayer().addPower(power, time);
+                getModel().getPlayer().addPower(power, time + power.getPowerLength());
                 getModel().removePower(power);
             }
         }
+    }
+
+    public void shoot(){
+        getModel().shoot();
     }
 
     @Override
@@ -61,17 +64,18 @@ public class PlayerController extends GameController {
         if (action == GUI.ACTION.RIGHT) movePlayerRight(time);
         if (action == GUI.ACTION.DOWN) movePlayerDown(time);
         if (action == GUI.ACTION.LEFT) movePlayerLeft(time);
-
+        if (action == GUI.ACTION.TAB) shoot();
         checkPowers(time);
     }
 
     private void checkPowers(long time) {
         Map<PowerType, Long> powers = new HashMap<>(getModel().getPlayer().getActivePowers());
         for (Entry<PowerType, Long> power : getModel().getPlayer().getActivePowers().entrySet()) {
-            if (time - power.getValue() > powerExpiration) {
+            if (time >= power.getValue()) {
                 powers.remove(power.getKey());
             }
         }
         getModel().getPlayer().setPowers(powers);
     }
+
 }

@@ -1,18 +1,19 @@
 package com.l02gr01.escape.model.elements.enemies;
 
-import com.l02gr01.escape.model.Level;
-import com.l02gr01.escape.model.Position;
 import com.l02gr01.escape.model.elements.Element;
 import com.l02gr01.escape.model.elements.enemies.MovingStrategy.MovingStrategy;
 import com.l02gr01.escape.model.elements.enemies.MovingStrategy.RandomMovingStrategy;
 
 public abstract class Enemy extends Element {
 
-  int damage;
-  char symbol;
-  String color;
 
-  MovingStrategy strategy = new RandomMovingStrategy();  // Just for example
+  private int life = 40;
+
+  final int damage;
+  final char symbol;
+  final String color;
+
+  final MovingStrategy strategy = new RandomMovingStrategy();  // Just for example
 
   public Enemy(int x, int y, int damage, char symbol, String color) {
     super(x, y);
@@ -27,14 +28,22 @@ public abstract class Enemy extends Element {
 
   public int getDamage(){
     return damage;
-  };
+  }
 
   public  char getSymbol(){
     return symbol;
-  };
+  }
+
+
+  public boolean removeLife(int damage){
+    // Returns true if died. Returns false if still alive.
+    life = life - damage;
+    System.out.println(life);
+    return life <= 0;
+  }
 
   public String getColor(){
     return color;
-  };
+  }
 
 }

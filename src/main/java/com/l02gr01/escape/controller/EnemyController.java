@@ -2,13 +2,10 @@ package com.l02gr01.escape.controller;
 
 
 import com.l02gr01.escape.Game;
-import com.l02gr01.escape.model.elements.enemies.MovingStrategy.MovingStrategy;
-import com.l02gr01.escape.model.elements.enemies.MovingStrategy.RandomMovingStrategy;
 import com.l02gr01.escape.gui.GUI;
 import com.l02gr01.escape.model.Level;
 import com.l02gr01.escape.model.elements.enemies.Enemy;
 import com.l02gr01.escape.model.elements.powers.Power.PowerType;
-import java.io.IOException;
 
 public class EnemyController extends GameController {
     private long lastMovement;
@@ -20,7 +17,7 @@ public class EnemyController extends GameController {
     }
 
     @Override
-    public void step(Game game, GUI.ACTION action, long time) throws IOException {
+    public void step(Game game, GUI.ACTION action, long time) {
         if (time - lastMovement > 500) {
             for (Enemy enemy : getModel().getEnemies())
                 moveEnemy(enemy);
