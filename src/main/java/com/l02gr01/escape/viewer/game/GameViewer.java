@@ -30,8 +30,8 @@ public class GameViewer extends Viewer<Level> {
   }
 
   private <T extends Element> void drawElement(GUI gui, T element, ElementViewer<T> viewer) {
-    //if(element.getPosition().iswithindistance(getModel().getPlayer().getPosition(), 3)){
+    if(element.getPosition().iswithindistance(getModel().getPlayer().getPosition(), 3)){
       viewer.draw(element, gui);
-    //}
+    }
   }
 }
