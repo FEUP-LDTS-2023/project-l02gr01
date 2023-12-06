@@ -7,7 +7,7 @@ import com.l02gr01.escape.model.elements.enemies.MovingStrategy.RandomMovingStra
 public class Enemy extends Element {
 
 
-  private int life = 40;
+  private int life = 20;
 
   final int damage;
   final String color;

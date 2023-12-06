@@ -25,7 +25,12 @@ public class GameViewer extends Viewer<Level> {
     drawElement(gui, getModel().getPlayer(), new PlayerViewer());
     drawElements(gui, getModel().getBullets(), new BulletViewer());
 
-    gui.drawText(new Position(0, 0), "Health " + "-".repeat(getModel().getPlayer().getHealth() / 10), "#FFD700");
+
+    int userhealth = getModel().getPlayer().getHealth();
+    if(userhealth < 0){
+      userhealth = - userhealth;
+    }
+    gui.drawText(new Position(0, 0), "Health " + "-".repeat(userhealth / 10), "#FFD700");
     gui.drawText(new Position(20, 0), "Bullets "+ getModel().getPlayer().getBulletsAvailable(), "#FFFFFF");
   }
 

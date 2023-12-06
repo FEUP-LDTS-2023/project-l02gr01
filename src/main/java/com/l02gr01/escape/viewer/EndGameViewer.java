@@ -15,5 +15,8 @@ public class EndGameViewer extends Viewer<EndGame>{
         gui.drawText(new Position(2, 2), "YOUR STATS", "#FFFFFF");
         gui.drawText(new Position(2, 4),"Level:" + getModel().level(), "#FFFFFF");
         gui.drawText(new Position(2, 6), "Time (s):" + getModel().time(), "#FFFFFF");
+
+        gui.drawText(new Position(2, 9), "TAB to go to LEADERBOARD", "#FFFFFF");
+        gui.drawText(new Position(2,  11), "ENTER to go to MENU", "#FFFFFF");
     }
 }
