@@ -1,5 +1,6 @@
 package com.l02gr01.escape.gui;
 
+import com.googlecode.lanterna.Symbols;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.screen.Screen;
@@ -36,25 +37,25 @@ class LanternaGUITest {
         Player player1 = new Player(5,5);
         gui.drawPlayer(player1);
         Mockito.verify(tgraph, Mockito.times(1)).setForegroundColor(new TextColor.RGB(255, 215, 0));
-        Mockito.verify(tgraph, Mockito.times(1)).putString(5, 6, "P");
+        Mockito.verify(tgraph, Mockito.times(1)).setCharacter(5,6, Symbols.FACE_WHITE);
 
         Player player2 = new Player(8,9);
         player2.addPower(new Shield(8,9), 100);
         gui.drawPlayer(player2);
-        Mockito.verify(tgraph, Mockito.times(1)).setForegroundColor(new TextColor.RGB(33, 251, 255));
-        Mockito.verify(tgraph, Mockito.times(1)).putString(8, 10, "P");
+        Mockito.verify(tgraph, Mockito.times(1)).setForegroundColor(new TextColor.RGB(168, 148, 255));
+        Mockito.verify(tgraph, Mockito.times(1)).setCharacter(8,10, Symbols.FACE_WHITE);
     }
 
     @Test
     void testDrawExit() {
 
         gui.drawExit(new Position(1, 1), false);
-        Mockito.verify(tgraph, Mockito.times(1)).setForegroundColor(new TextColor.RGB(99, 99, 97));
-        Mockito.verify(tgraph, Mockito.times(1)).putString(1, 2, "E");
+        Mockito.verify(tgraph, Mockito.times(1)).setForegroundColor(new TextColor.RGB(92, 1, 46));
+        Mockito.verify(tgraph, Mockito.times(1)).setCharacter(1,2,Symbols.BLOCK_SPARSE);
 
         gui.drawExit(new Position(0,0), true);
         Mockito.verify(tgraph, Mockito.times(1)).setForegroundColor(new TextColor.RGB(27, 242, 7));
-        Mockito.verify(tgraph, Mockito.times(1)).putString(0, 1, "E");
+        Mockito.verify(tgraph, Mockito.times(1)).setCharacter(0,1,Symbols.BLOCK_SPARSE);
 
     }
 }
