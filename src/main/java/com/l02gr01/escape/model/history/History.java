@@ -12,6 +12,14 @@ public class History {
 
     private long lastStartTime = 0;
 
+    private String username;
+
+    public String getUsername(){
+        return username;
+    }
+    public void setUsername(String username){
+        this.username = username;
+    }
 
     public static History getInstance(){
         return instance;

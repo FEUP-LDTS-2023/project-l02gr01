@@ -1,14 +1,19 @@
 package com.l02gr01.escape.model;
 
-public class PreGame {
+import com.l02gr01.escape.gui.text.TextManipulator;
+import com.l02gr01.escape.gui.text.TextObserver;
 
-    String username;
+public class PreGame implements TextObserver {
 
-    public void addChar(char c){
-        username = username + c;
-    }
+    String username = new String();
+
     public String getName(){
         return username;
     }
 
+
+    @Override
+    public void beNotified(String text) {
+        username = text;
+    }
 }

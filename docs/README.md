@@ -216,7 +216,7 @@ However, there are still some code smells.
 
 - Large "Level" Class: The Game level class has grown too large and might benefit from decomposition.
 - The powers and enemy classes are not following good practices of separation, having information about the view, when they should only have model information. 
-
+- The Enemy class is storing information about the model and the view, which affects the model-view-controller pattern 
 
 
 ### TESTING
