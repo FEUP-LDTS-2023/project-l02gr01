@@ -2,23 +2,22 @@ package com.l02gr01.escape.model;
 
 import com.l02gr01.escape.model.history.History;
 import com.l02gr01.escape.model.history.HistoryLoader;
+import com.l02gr01.escape.model.history.event.Event;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Leaderboard {
 
-    final HistoryLoader historyLoader = new HistoryLoader();
+    private final History history = History.getInstance();
 
     public Leaderboard() throws URISyntaxException, IOException {
-        historyLoader.loadMemory();
-        History.getInstance().sort();
+        history.sort();
     }
-
-    public void clearHistory() throws URISyntaxException, IOException {
-        historyLoader.storeMemory(History.getInstance().listEvents());
-        History.getInstance().setHistory(new ArrayList<>());
+    public List<Event> getEvents(){
+        return history.listEvents();
     }
 
 }

@@ -40,6 +40,9 @@ public class PlayerController extends GameController {
             getModel().getPlayer().setPosition(position);
             Key key = getModel().getKeys().getKey(position);
             if (key != null) {
+                if(!key.isPickedUp()){
+                    getModel().getPlayer().addbullets();
+                }
                 key.setPickedUp(true);
             }
             Enemy enemy = getModel().getEnemy(position);

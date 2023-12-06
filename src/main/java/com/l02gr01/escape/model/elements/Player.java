@@ -58,6 +58,12 @@ public class Player extends Element {
     }
 
 
+    public void addbullets(){
+        bulletsAvailable += 5;
+    }
+    public int getBulletsAvailable(){
+        return bulletsAvailable;
+    }
     public void usedBullet(){
         bulletsAvailable--;
         if(bulletsAvailable < 0){
