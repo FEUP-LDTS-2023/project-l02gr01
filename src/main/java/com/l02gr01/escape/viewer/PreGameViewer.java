@@ -11,8 +11,8 @@ public class PreGameViewer extends Viewer<PreGame> {
 
     @Override
     protected void drawElements(GUI gui) {
-        gui.drawText(new Position(5, 5), "Welcome", "#FFFFFF");
-        gui.drawText(new Position(2, 10), "What's your name?", "#FFFFFF");
-        gui.drawText(new Position(2, 14), getModel().getName(), "#FFFFF6");
+        gui.drawText(new Position(11, 5), "Welcome", "#FFFFFF");
+        gui.drawText(new Position(6, 10), "What's your name?", "#FFFFFF");
+        gui.drawText(new Position(10, 14), getModel().getName(), "#FFFFF6");
     }
 }

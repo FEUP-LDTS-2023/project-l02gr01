@@ -22,7 +22,7 @@ public class TextManipulator {
         }
     }
     public void addCharacter(char character){
-        if(reading){
+        if(reading && text.length() < 9){
             text.append(character);
             updateListeners();
         }

@@ -1,20 +1,20 @@
 
-       INSTRUCTIONS
+         INSTRUCTIONS
 
-      GAME OBJECTIVE:
+        GAME OBJECTIVE:
 
-       You're stuck
-     inside a dungeon.
-     Pick all the keys
-       to run away!
-        Be careful,
-    you're not alone...
+         You're stuck
+       inside a dungeon.
+       Pick all the keys
+         to run away!
+          Be careful,
+      you're not alone...
 
 
-    Up Arrow -> Go Up
-  Left Arrow -> Go Left
- Right Arrow -> Go Right
-  Down Arrow -> Go Down
-         Tab -> Shoot
+      Up Arrow -> Go Up
+    Left Arrow -> Go Left
+   Right Arrow -> Go Right
+    Down Arrow -> Go Down
+           Tab -> Shoot
 
-        Press Enter
+          Press Enter
