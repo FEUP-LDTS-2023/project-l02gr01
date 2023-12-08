@@ -87,11 +87,14 @@ public class LanternaGUI implements GUI{
         if (keyStroke.getKeyType() == KeyType.ArrowLeft) return ACTION.LEFT;
 
         if (keyStroke.getKeyType() == KeyType.Enter) return ACTION.SELECT;
+        if (keyStroke.getKeyType() == KeyType.Backspace) {
+            TextManipulator.getInstance().removeCharacter();
+        }
+
         Character key = keyStroke.getCharacter();
         if (key >= 'a' && key <= 'z') {
             TextManipulator.getInstance().addCharacter(key);
         }
-
         if (keyStroke.getKeyType() == KeyType.Tab) return ACTION.TAB;
 
         return ACTION.NONE;

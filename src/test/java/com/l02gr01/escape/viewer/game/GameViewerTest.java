@@ -89,4 +89,19 @@ class GameViewerTest {
         Mockito.verify(gui, Mockito.times(1)).drawPlayer(level.getPlayer());
         Mockito.verify(gui, Mockito.times(1)).drawPlayer(Mockito.any(Player.class));
     }
+
+    @Test
+    void testDrawRange() throws IOException {
+        level.getPlayer().addPower(new SuperVision(5,5), 1000);
+        gameViewer.draw(gui);
+
+        Mockito.verify(gui, Mockito.times(1)).drawEnemy(level.getEnemy(new Position(0,0)));
+        Mockito.verify(gui, Mockito.times(2)).drawEnemy(Mockito.any(Enemy.class));
+
+        Mockito.verify(gui, Mockito.times(1)).drawWall(level.getWalls().get(2).getPosition());
+        Mockito.verify(gui, Mockito.times(3)).drawWall(Mockito.any(Position.class));
+
+        Mockito.verify(gui, Mockito.times(1)).drawPower(level.getPowers().get(3));
+        Mockito.verify(gui, Mockito.times(4)).drawPower(Mockito.any(Power.class));
+    }
 }

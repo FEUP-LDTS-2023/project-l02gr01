@@ -10,8 +10,8 @@ import javax.sound.sampled.Clip;
 public class AudioManager {
 
   private static AudioManager audioManager;
-  public static final String AUDIO_DIRECTORY = "audio/";
-  public static final String BACKGROUND_MUSIC_FILE = "background.wav";
+  private static final String AUDIO_DIRECTORY = "audio/";
+  private static final String BACKGROUND_MUSIC_FILE = "background.wav";
 
   // Can be used to track long playing sounds and stop them
   private final Set<Clip> activeSounds = new HashSet<>();

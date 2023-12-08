@@ -244,11 +244,14 @@ However, there are still some code smells.
 
 - Screenshot of coverage report.
 
-TBD
+![Coverage Report](coverage_report.png)
+
+We believe it's important to note that we have used property based testing on certain class methods. 
+
 
 - Link to mutation testing report.
 
-TBD
+
 
 ### SELF-EVALUATION
 
@@ -258,6 +261,9 @@ The initial UML structure was designed by Filipe Correia and transformed to a di
 
 Filipe Correia and Ricardo Morais developed initial structure of the code and some initial functionalities. 
 Gonçalo Remelhe developed the code related with Instructions and tests.
+
+After the first delivery, the work was divided in a equilibrated way.
+The font used was designed by Ricardo Morais.
 
 Filipe Correia overviewed the code design and wrote the README files.
 

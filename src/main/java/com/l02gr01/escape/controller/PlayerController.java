@@ -36,25 +36,28 @@ public class PlayerController extends GameController {
     }
 
     private void movePlayer(Position position, long time) {
-        if (getModel().isEmpty(position)) {
-            getModel().getPlayer().setPosition(position);
-            Key key = getModel().getKeys().getKey(position);
-            if (key != null) {
-                if(!key.isPickedUp()){
-                    getModel().getPlayer().addbullets();
+        if(((position.getX() < getModel().getWidth() && position.getY() < getModel().getHeight()) && (position.getY() >= 0 && position.getX() >= 0))){
+            if (getModel().isEmpty(position)) {
+                getModel().getPlayer().setPosition(position);
+                Key key = getModel().getKeys().getKey(position);
+                if (key != null) {
+                    if(!key.isPickedUp()){
+                        getModel().getPlayer().addbullets();
+                    }
+                    key.setPickedUp(true);
                 }
-                key.setPickedUp(true);
-            }
-            Enemy enemy = getModel().getEnemy(position);
-            if (enemy != null) {
-                getModel().getPlayer().changeHealth(-1 * enemy.getDamage());
-            }
-            Power power = getModel().getPower(position);
-            if (power != null) {
-                getModel().getPlayer().addPower(power, time + power.getPowerLength());
-                getModel().removePower(power);
+                Enemy enemy = getModel().getEnemy(position);
+                if (enemy != null) {
+                    getModel().getPlayer().changeHealth(-1 * enemy.getDamage());
+                }
+                Power power = getModel().getPower(position);
+                if (power != null) {
+                    getModel().getPlayer().addPower(power, time + power.getPowerLength());
+                    getModel().removePower(power);
+                }
             }
         }
+
     }
 
     public void shoot(){

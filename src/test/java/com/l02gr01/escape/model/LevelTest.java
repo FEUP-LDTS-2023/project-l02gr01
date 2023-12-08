@@ -1,12 +1,18 @@
 package com.l02gr01.escape.model;
 
+import com.l02gr01.escape.controller.LevelController;
+import com.l02gr01.escape.controller.PlayerController;
+import com.l02gr01.escape.gui.GUI;
 import com.l02gr01.escape.model.elements.Exit;
 import com.l02gr01.escape.model.elements.Key;
+import com.l02gr01.escape.model.elements.Player;
 import com.l02gr01.escape.model.elements.Wall;
 
 import java.util.List;
 
 import com.l02gr01.escape.model.elements.enemies.Enemy;
+import net.jqwik.api.*;
+import net.jqwik.api.constraints.IntRange;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -62,4 +68,46 @@ class LevelTest {
         assertNotNull(level.getEnemy(new Position(9,10)));
         assertNull(level.getEnemy(new Position(0,0)));
     }
+
+
+    @Test
+    void testBullets(){
+        level.setPlayer(new Player(0,0));
+        int initial = level.getPlayer().getBulletsAvailable();
+        level.getPlayer().addbullets();
+        assertEquals(initial + 5, level.getPlayer().getBulletsAvailable());
+        level.shoot();
+        assertEquals(1, level.getBullets().size());
+        assertEquals(initial + 4, level.getPlayer().getBulletsAvailable());
+        assertEquals(10, level.getBullets().get(0).getDamage());
+    }
+
+    @Test
+    void testDirectionBullet(){
+        level.setPlayer(new Player(0,0));
+        level.getPlayer().setPosition(new Position(0,1));
+        level.shoot();
+        assertEquals(new Position(0,1), level.getBullets().get(0).getDirection());
+    }
+
+    @Property
+    void allArenasAreClosed(@ForAll @IntRange(min = 0, max = 50) int x, @ForAll @IntRange(min = 0, max = 50) int y, @ForAll List<GUI.@From("moveActions") ACTION> actions) {
+        Level level = new Level(0, 50, 0);
+        level.setPlayer(new Player(x,y));
+        PlayerController controller = new PlayerController(level);
+
+        for (GUI.ACTION action : actions) {
+            controller.step(null, action, 100);
+            assert (controller.getModel().getPlayer().getPosition().getX() >= 0);
+            assert (controller.getModel().getPlayer().getPosition().getY() >= 0);
+            assert (controller.getModel().getPlayer().getPosition().getX() <= 50);
+            assert (controller.getModel().getPlayer().getPosition().getY() <= 50);
+        }
+    }
+
+    @Provide
+    Arbitrary<GUI.ACTION> moveActions() {
+        return Arbitraries.of(GUI.ACTION.UP, GUI.ACTION.RIGHT, GUI.ACTION.DOWN, GUI.ACTION.LEFT);
+    }
+
 }

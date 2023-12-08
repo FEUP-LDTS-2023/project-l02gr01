@@ -40,4 +40,15 @@ public class TextManipulator {
             observer.beNotified(text.toString());
         }
     }
+
+    public boolean isReading() {
+        return reading;
+    }
+
+    public void removeCharacter() {
+        if (reading && !text.isEmpty()) {
+           text.deleteCharAt(text.length() - 1);
+           updateListeners();
+        }
+    }
 }

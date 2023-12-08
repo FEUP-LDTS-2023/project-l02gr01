@@ -69,9 +69,11 @@ class PlayerControllerTest {
 
     @Test
     void testDamage() {
-        level.setEnemies(List.of(new Enemy(6, 5)));
+        level.setEnemies(List.of(new Enemy(6, 5), new Enemy(7,5,20,"#FFFFFF")));
         playerController.movePlayerRight(100);
         assertEquals(player.getHealth(), 90);
+        playerController.movePlayerRight(100);
+        assertEquals(player.getHealth(), 70);
     }
 
     @Test

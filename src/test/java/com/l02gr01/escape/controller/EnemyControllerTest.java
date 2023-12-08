@@ -35,7 +35,7 @@ class EnemyControllerTest {
     }
 
     @Test
-    void testMoveEnemy() throws IOException {
+    void testMoveEnemy() {
         Enemy enemy = Mockito.mock(Enemy.class);
         Mockito.when(enemy.getStrategy()).thenReturn(new RandomMovingStrategy());
         Mockito.when(enemy.getPosition()).thenReturn(new Position(1, 1));
@@ -50,7 +50,7 @@ class EnemyControllerTest {
     }
 
     @Test
-    void testOnlyMonsterMove() throws IOException {
+    void testOnlyMonsterMove() {
         Enemy troll = new Enemy(2,2);
         level.setEnemies(List.of(troll));
         level.setWalls(Arrays.asList(new Wall(3,2), new Wall(2,3), new Wall(2,1)));
