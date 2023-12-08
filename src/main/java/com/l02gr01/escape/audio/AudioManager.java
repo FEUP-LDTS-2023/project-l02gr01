@@ -14,8 +14,8 @@ public class AudioManager {
   public static final String BACKGROUND_MUSIC_FILE = "background.wav";
 
   // Can be used to track long playing sounds and stop them
-  private static final Set<Clip> activeSounds = new HashSet<>();
-
+  private final Set<Clip> activeSounds = new HashSet<>();
+  private AudioManager(){}
   public static AudioManager getInstance() {
     if (audioManager == null) {
       audioManager = new AudioManager();

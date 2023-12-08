@@ -12,7 +12,7 @@ public class Enemy extends Element {
   final int damage;
   final String color;
 
-  final MovingStrategy strategy = new RandomMovingStrategy();  // Just for example
+  MovingStrategy strategy = new RandomMovingStrategy();
 
   public Enemy(int x, int y){
     // Supposed to be a troll
@@ -26,6 +26,9 @@ public class Enemy extends Element {
     this.color = color;
   }
 
+  public void setStrategy(MovingStrategy strategy){
+    this.strategy = strategy;
+  }
   public MovingStrategy getStrategy(){
     return strategy;
   }

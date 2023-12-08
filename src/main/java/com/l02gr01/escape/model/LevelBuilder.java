@@ -2,6 +2,8 @@ package com.l02gr01.escape.model;
 
 import com.l02gr01.escape.model.elements.*;
 import com.l02gr01.escape.model.elements.enemies.Enemy;
+import com.l02gr01.escape.model.elements.enemies.MovingStrategy.HorizontalMovingStrategy;
+import com.l02gr01.escape.model.elements.enemies.MovingStrategy.VerticalMovingStrategy;
 import com.l02gr01.escape.model.elements.powers.FreezeEnemy;
 import com.l02gr01.escape.model.elements.powers.Power;
 import com.l02gr01.escape.model.elements.powers.Shield;
@@ -133,6 +135,16 @@ public class LevelBuilder {
             break;
           case 'X':
             enemies.add(new Enemy(x, y,20,"#750f04"));
+            break;
+          case 'H':
+            Enemy horenemy = new Enemy(x,y, 10, "#116909");
+            horenemy.setStrategy(new HorizontalMovingStrategy());
+            enemies.add(horenemy);
+            break;
+          case 'C':
+            Enemy vertenemy = new Enemy(x,y, 10, "#116909");
+            vertenemy.setStrategy(new VerticalMovingStrategy());
+            enemies.add(vertenemy);
             break;
         }
       }

@@ -202,6 +202,28 @@ Using this pattern, the task of reading characters from the user's keyboard beco
 
 
 ---
+## Play Sound During the Game
+
+**Problem in Context**
+
+We wanted to entertain the player with some sound. However, we didn't want the sound to be controlled inside the model. 
+Additionally, we didn't want a song to play at the same time as another song, so control of the music should be centralized.
+
+**The Pattern**
+
+Therefore, to comply with this requirement, we decided to use the Singleton pattern on the AudioManager class.
+
+**Implementation**
+
+We implemented a getInstance method as static, which creates the object on demand (stored in a static variable) and returns always the same instance.
+
+**Consequences**
+
+The pattern we use, guarantees the uniqueness of a AudioManager object. This leads to easier audio management and, the fact 
+that the object is not initialized on start of the game, can also contribute to save some memory space in case we decided that the audio was not needed.
+
+
+---
 
 We also applied the Singleton to the Game class, to guarantee that there is only one Game running at a time.
 
@@ -215,8 +237,7 @@ However, there are still some code smells.
 > This section should describe 3 to 5 different code smells that you have identified in your current implementation.
 
 - Large "Level" Class: The Game level class has grown too large and might benefit from decomposition.
-- The powers and enemy classes are not following good practices of separation, having information about the view, when they should only have model information. 
-- The Enemy class is storing information about the model and the view, which affects the model-view-controller separation. However, the other alternatives (move the color logic to the viewer or create class for each enemy) forced the use of too many conditionals or would lead to an explosion of classes (severe increase in the number of classes with just a constructor).
+- The Enemy class is storing information about the model and the view, which affects the model-view-controller separation. However, the other alternatives (move the color logic to the viewer or create class for each enemy) forced the use of too many conditionals or would lead to an explosion of classes (i.e. severe increase in the number of classes with just a constructor).
 
 
 ### TESTING
