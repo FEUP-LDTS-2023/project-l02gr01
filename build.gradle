@@ -2,6 +2,14 @@ plugins {
     id 'java'
     id 'application'
     id("org.kordamp.gradle.errorprone") version "0.53.0"
+    id 'info.solidsoft.pitest' version '1.15.0'
+
+}
+
+pitest {
+    //adds dependency to org.pitest:pitest-junit5-plugin and sets "testPlugin" to "junit5"
+    junit5PluginVersion = '1.2.1'
+    pitestVersion = '1.15.2'
 }
 
 group = 'com.l02gr01'
