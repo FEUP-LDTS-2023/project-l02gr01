@@ -95,7 +95,7 @@ public class LanternaGUI implements GUI{
         if (key >= 'a' && key <= 'z') {
             TextManipulator.getInstance().addCharacter(key);
         }
-
+        if (keyStroke.getKeyType() == KeyType.Tab) return ACTION.TAB;
 
         return ACTION.NONE;
     }
