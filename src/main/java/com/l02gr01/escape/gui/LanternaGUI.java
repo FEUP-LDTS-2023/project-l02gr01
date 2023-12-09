@@ -78,7 +78,7 @@ public class LanternaGUI implements GUI{
         KeyStroke keyStroke = screen.pollInput();
         if (keyStroke == null) return ACTION.NONE;
 
-        if (keyStroke.getKeyType() == KeyType.EOF) return ACTION.QUIT;
+        if (keyStroke.getKeyType() == KeyType.EOF || keyStroke.getKeyType() == KeyType.Escape) return ACTION.QUIT;
         if (keyStroke.getKeyType() == KeyType.Character && keyStroke.getCharacter() == 'q') return ACTION.QUIT;
 
         if (keyStroke.getKeyType() == KeyType.ArrowUp) return ACTION.UP;
@@ -95,7 +95,7 @@ public class LanternaGUI implements GUI{
         if (key >= 'a' && key <= 'z') {
             TextManipulator.getInstance().addCharacter(key);
         }
-        if (keyStroke.getKeyType() == KeyType.Tab) return ACTION.TAB;
+
 
         return ACTION.NONE;
     }
@@ -149,7 +149,7 @@ public class LanternaGUI implements GUI{
 
     @Override
     public void drawEnemy(Enemy enemy) {
-        drawCharacter(enemy.getPosition().getX(), enemy.getPosition().getY(), '&', enemy.getColor());
+        drawCharacter(enemy.getPosition().getX(), enemy.getPosition().getY(), Symbols.DIAMOND, enemy.getColor());
     }
 
     @Override
