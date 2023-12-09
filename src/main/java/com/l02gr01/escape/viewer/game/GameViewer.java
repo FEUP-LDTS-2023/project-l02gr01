@@ -1,5 +1,6 @@
 package com.l02gr01.escape.viewer.game;
 
+import com.googlecode.lanterna.Symbols;
 import com.l02gr01.escape.gui.GUI;
 import com.l02gr01.escape.model.Level;
 import com.l02gr01.escape.model.Position;
@@ -30,7 +31,7 @@ public class GameViewer extends Viewer<Level> {
     if(userhealth < 0){
       userhealth = - userhealth;
     }
-    gui.drawText(new Position(0, 0), "Health " + "-".repeat(userhealth / 10), "#FFD700");
+    gui.drawText(new Position(0, 0), String.valueOf(Symbols.HEART).repeat(userhealth / 10), "#ff0000");
     gui.drawText(new Position(20, 0), "Bullets "+ getModel().getPlayer().getBulletsAvailable(), "#FFFFFF");
   }
 
