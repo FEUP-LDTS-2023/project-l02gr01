@@ -5,7 +5,7 @@
 
 In this game, your mission is to escape from the arena after grabbing all keys to open the exit door. But, you must run away from the monsters! Oh.. By the way, Your visibility is extremely reduced, but there are some powers to help you out! 
 
-This project was developed by *Filipe Correia* (*up202206776*@up.pt), *Gonçalo Remelhe* (*up202205318*@up.pt) and *Ricardo Morais* (*up*@up.pt) for LDTS 2023⁄24.
+This project was developed by *Filipe Correia* (*up202206776*@up.pt), *Gonçalo Remelhe* (*up202205318*@up.pt) and *Ricardo Morais* (*up200300809*@up.pt) for LDTS 2023⁄24.
 
 ## IMPLEMENTED FEATURES
 
@@ -21,7 +21,7 @@ This project was developed by *Filipe Correia* (*up202206776*@up.pt), *Gonçalo 
 - **Username Form**: The users can register their name associated with the score, due to the collection of the name before game start. 
 
 
-Here are some screenshots of the game functionalities as of 26/11:
+Here are some screenshots of the game functionalities as of 9/12:
 
 ![Main State](home.png)
 ![Instructions](instructions.png)
@@ -157,7 +157,7 @@ that may use our game.
 
 **Problem in Context**
 
-We wanted to guarantee that while some enemies where easy to run away from, some would try to follow the user.
+We wanted to guarantee that different enemies had different moving strategies according to the logic on each place.
 
 **The Pattern**
 
@@ -285,7 +285,7 @@ Filipe Correia and Ricardo Morais developed initial structure of the code and so
 Gonçalo Remelhe developed the code related with Instructions and tests.
 
 After the first delivery, the work was divided in a equilibrated way.
-The font used was designed by Ricardo Morais.
+The result of the game design is credit of Gonçalo and Ricardo Morais.
 
 Filipe Correia overviewed the code design and wrote the README files.
 
