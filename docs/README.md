@@ -269,6 +269,10 @@ We believe it's important to note that we have used property based testing on ce
 
 - Link to mutation testing report.
 
+![Pitest Coverage Report](pitest.png)
+
+Link: [pitest](../build/reports/pitest/index.html)
+(este link funciona apenas após realização de "gradle pitest")
 
 
 ### SELF-EVALUATION
