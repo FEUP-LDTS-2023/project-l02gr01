@@ -22,14 +22,7 @@ public class HistoryLoader {
 
         BufferedReader br = Files.newBufferedReader(Paths.get(fileLocation), Charset.defaultCharset());
         List<Event> events = readEvent(br);
-        clear(fileLocation);
         return events;
-    }
-
-    private void clear(String fileLocation) throws IOException {
-        FileOutputStream outputStream = new FileOutputStream(fileLocation, false);
-        outputStream.write(new byte[0]);
-        outputStream.close();
     }
 
     private List<Event> readEvent(BufferedReader br) throws IOException {

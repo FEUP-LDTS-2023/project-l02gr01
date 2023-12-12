@@ -12,11 +12,18 @@ public class EndGameViewer extends Viewer<EndGame>{
 
     @Override
     protected void drawElements(GUI gui) {
-        gui.drawText(new Position(2, 2), "YOUR STATS", "#FFFFFF");
-        gui.drawText(new Position(2, 4),"Level:" + getModel().level(), "#FFFFFF");
-        gui.drawText(new Position(2, 6), "Time (s):" + getModel().time(), "#FFFFFF");
+        gui.drawText(new Position(10, 2), "GAME OVER", "#FF1100");
+        gui.drawText(new Position(10, 8), "YOUR STATS", "#FFFFFF");
+        gui.drawText(new Position(11, 10),"Level:" + getModel().level(), "#FFFFFF");
+        gui.drawText(new Position(10, 12), "Time (s):" + getModel().time(), "#FFFFFF");
 
-        gui.drawText(new Position(2, 9), "TAB to go to LEADERBOARD", "#FFFFFF");
-        gui.drawText(new Position(2,  11), "ENTER to go to MENU", "#FFFFFF");
+        gui.drawText(new Position(5,  18), "ENTER", "#FFD700");
+        gui.drawText(new Position(11,  18), "to go to", "#FFFFFF");
+        gui.drawText(new Position(20,  18), "MENU", "#3333FF");
+
+        gui.drawText(new Position(3, 20), "TAB", "#FFD700");
+        gui.drawText(new Position(7, 20), "to go to", "#FFFFFF");
+        gui.drawText(new Position(16, 20), "LEADERBOARD", "#3333FF");
+
     }
 }

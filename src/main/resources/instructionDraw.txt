@@ -17,4 +17,4 @@
     Down Arrow -> Go Down
            Tab -> Shoot
 
-          Press Enter
+     ENTER to go to MENU
