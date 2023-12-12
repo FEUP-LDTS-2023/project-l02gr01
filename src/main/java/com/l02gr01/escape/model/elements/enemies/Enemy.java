@@ -43,7 +43,6 @@ public class Enemy extends Element {
   public boolean removeLife(int damage){
     // Returns true if died. Returns false if still alive.
     life = life - damage;
-    System.out.println(life);
     return life <= 0;
   }
 

@@ -6,14 +6,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PositionTest {
     @Test
-    public void testPosition() {
+    void testPosition() {
         Position pos = new Position(5,6);
         assertEquals(5, pos.getX());
         assertEquals(6, pos.getY());
     }
 
     @Test
-    public void moveRight() {
+    void moveRight() {
         Position pos = new Position(0,0);
         pos = pos.getRight();
         assertEquals(1, pos.getX());
@@ -21,7 +21,7 @@ class PositionTest {
     }
 
     @Test
-    public void moveLeft() {
+    void moveLeft() {
         Position pos = new Position(10,15);
         pos = pos.getLeft();
         assertEquals(9, pos.getX());
@@ -29,7 +29,7 @@ class PositionTest {
     }
 
     @Test
-    public void moveDown() {
+    void moveDown() {
         Position pos = new Position(0,0);
         pos = pos.getDown();
         assertEquals(0, pos.getX());
@@ -37,7 +37,7 @@ class PositionTest {
     }
 
     @Test
-    public void moveUp() {
+    void moveUp() {
         Position pos = new Position(10000,0);
         pos = pos.getUp();
         assertEquals(10000, pos.getX());

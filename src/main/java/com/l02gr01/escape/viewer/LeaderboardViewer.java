@@ -16,11 +16,11 @@ public class LeaderboardViewer extends Viewer<Leaderboard> {
 
     @Override
     protected void drawElements(GUI gui) {
-        gui.drawText(new Position(7, 1), "Leaderboard", "#FFD700");
-        gui.drawText(new Position(0,3), "Rank", "#FFFFFF");
-        gui.drawText(new Position(6,3), "Name", "#FFFFFF");
-        gui.drawText(new Position(17,3), "Level", "#FFFFFF");
-        gui.drawText(new Position(25,3), "Score", "#FFFFFF");
+        gui.drawText(new Position(9, 1), "Leaderboard", "#ffd700");
+        gui.drawText(new Position(0,4), "Rank", "#3333FF");
+        gui.drawText(new Position(6,4), "Name", "#3333FF");
+        gui.drawText(new Position(17,4), "Level", "#3333FF");
+        gui.drawText(new Position(25,4), "Score", "#3333FF");
 
         List<Event> events = getModel().getEvents();
 
@@ -30,10 +30,15 @@ public class LeaderboardViewer extends Viewer<Leaderboard> {
             int finalLevel = events.get(i-1).getFinalLevel();
             int score = events.get(i-1).getPoints();
 
-            gui.drawText(new Position(0, 3+i), i + ".", "#FFFFFF");
-            gui.drawText(new Position(6,3+i), username, "#FFFFFF");
-            gui.drawText(new Position(17,3+i), Integer.toString(finalLevel), "#FFFFFF");
-            gui.drawText(new Position(25,3+i), Integer.toString(score), "#FFFFFF");
+            gui.drawText(new Position(0, 4+i), i + ".", "#03fbff");
+            gui.drawText(new Position(6,4+i), username, "#FFFFFF");
+            gui.drawText(new Position(17,4+i), Integer.toString(finalLevel), "#FFFFFF");
+            gui.drawText(new Position(25,4+i), Integer.toString(score), "#FFFFFF");
+
         }
+
+        gui.drawText(new Position(5,  20), "ENTER", "#FFD700");
+        gui.drawText(new Position(11,  20), "to go to", "#FFFFFF");
+        gui.drawText(new Position(20,  20), "MENU", "#3333FF");
     }
 }

@@ -14,7 +14,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import java.io.IOException;
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -28,7 +27,7 @@ class EnemyControllerTest {
     @BeforeEach
     void setUp() {
         level = new Level(15,15,1);
-        player = new Player(5,5);
+        player = new Player(1,2);
         enemyController = new EnemyController(level);
         level.setPlayer(player);
         game = Mockito.mock(Game.class);
@@ -43,14 +42,14 @@ class EnemyControllerTest {
         level.setEnemies(List.of(enemy));
 
         enemyController.step(game, GUI.ACTION.NONE, 1000);
-
+        enemyController.step(game, GUI.ACTION.NONE, 1500);
         Mockito.verify(enemy, Mockito.times(1)).getStrategy();
         Mockito.verify(enemy, Mockito.times(2)).getPosition();
         Mockito.verify(enemy, Mockito.times(1)).setPosition(Mockito.argThat(position -> position.getX() != 1 || position.getY() != 1));
     }
 
     @Test
-    void testOnlyMonsterMove() {
+    void testMonsterMove() {
         Enemy troll = new Enemy(2,2);
         level.setEnemies(List.of(troll));
         level.setWalls(Arrays.asList(new Wall(3,2), new Wall(2,3), new Wall(2,1)));
@@ -60,6 +59,8 @@ class EnemyControllerTest {
             enemyController.step(game, GUI.ACTION.NONE, time);
             time += 1000;
         }
+
         assertEquals(troll.getPosition(), new Position(1,2));
+        assertEquals(90, player.getHealth());
     }
 }
