@@ -28,7 +28,6 @@ class LeaderboardControllerTest {
 
     @Test
     void testSelectStep() throws IOException, URISyntaxException {
-        System.out.println("aqui bitch  lead");
         Mockito.doNothing().when(Mockito.mock(AudioManager.class)).playSound(Mockito.anyString());
         leaderboardController.step(mockGame, GUI.ACTION.SELECT, 0);
         Mockito.verify(mockGame).setState(Mockito.any(MenuState.class));

@@ -63,7 +63,7 @@ class LevelControllerTest {
         try (MockedStatic<History> history = Mockito.mockStatic(History.class)) {
             history.when(History::getInstance).thenReturn(historyMock);
 
-            Mockito.when(levelMock.getPlayer().getHealth()).thenReturn(0);
+            Mockito.when(playerMock.getHealth()).thenReturn(0);
 
             levelController.step(gameMock, GUI.ACTION.SELECT, 1000);
 
