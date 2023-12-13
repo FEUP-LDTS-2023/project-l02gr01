@@ -21,15 +21,7 @@ public abstract class Event {
         return finalLevel;
     }
 
-    public int getPoints(){
-        // Will either return the points or 0 (if calculated points are negative)
-        int winextra = 0;
-        if(this instanceof Win){
-            winextra += 40;
-        }
-        int result = (int)( finalLevel * 45L - (time / 4000 )) + winextra;
-        return Math.max(result, 0);
-    }
+    public abstract int getPoints();
 
     public abstract String getInfo();
 }
