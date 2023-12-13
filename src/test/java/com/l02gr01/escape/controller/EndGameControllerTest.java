@@ -28,7 +28,6 @@ class EndGameControllerTest {
 
     @Test
     void testSelectStep() throws IOException, URISyntaxException {
-        System.out.println("aqui bitch  endg");
         Mockito.doNothing().when(Mockito.mock(AudioManager.class)).playSound(Mockito.anyString());
         endGameController.step(mockGame, GUI.ACTION.SELECT, 0);
         Mockito.verify(mockGame).setState(Mockito.any(MenuState.class));

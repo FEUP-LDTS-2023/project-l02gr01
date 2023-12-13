@@ -22,7 +22,6 @@ class InstructionControllerTest {
 
     @Test
     void testSelectStep() {
-        System.out.println("aqui bitch  inst");
         Mockito.doNothing().when(Mockito.mock(AudioManager.class)).playSound(Mockito.anyString());
         instructionController.step(mockGame, GUI.ACTION.SELECT, 0);
         Mockito.verify(mockGame).setState(Mockito.any(MenuState.class));
