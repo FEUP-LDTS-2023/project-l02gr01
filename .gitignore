@@ -6,6 +6,8 @@ build/
 !**/src/test/**/build/
 gradlew
 gradlew.bat
+.jqwik-database
+
 
 ### IntelliJ IDEA ###
 .idea
