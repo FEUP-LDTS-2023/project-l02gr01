@@ -6,13 +6,11 @@ import com.l02gr01.escape.gui.GUI.ACTION;
 import com.l02gr01.escape.model.EndGame;
 import com.l02gr01.escape.model.Level;
 import com.l02gr01.escape.model.LevelBuilder;
-import com.l02gr01.escape.model.Menu;
 import com.l02gr01.escape.model.history.History;
 import com.l02gr01.escape.model.history.event.Loss;
 import com.l02gr01.escape.model.history.event.Win;
 import com.l02gr01.escape.states.EndGameState;
 import com.l02gr01.escape.states.GameState;
-import com.l02gr01.escape.states.MenuState;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
