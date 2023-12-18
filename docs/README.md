@@ -3,27 +3,33 @@
 > Include here one or two paragraphs explaining the main idea of the project, followed by a sentence identifying who the authors are.
 
 
-In this game, your mission is to escape from the arena after grabbing all keys to open the exit door. But, you must run away from the monsters! Oh.. By the way, Your visibility is extremely reduced, but there are some powers to help you out! 
+In this game, your mission is to escape from the arena after grabbing all keys to open the exit door. Throughout 4 levels of increasing difficulty, you'll be surrounded by enemies that will try to kill you and
+your visibility will be extremely limited to a field close to your player.
 
+Your only way to survive the enemies will involve the use of your gun! But, you'll have to be wise when spending your bullets! You start with only 5 bullets and each key gives you another five additional bullets!
+
+There are some powers scattered around in the arena, including increased visibility of the full arena, immobilization of the enemies and the shield, which makes you immortal during a limited amount of time!
 
 
 This project was developed by *Filipe Correia* (*up202206776*@up.pt), *Gonçalo Remelhe* (*up202205318*@up.pt) and *Ricardo Morais* (*up200300809*@up.pt) for LDTS 2023⁄24.
 
+
 ## IMPLEMENTED FEATURES
 
 > This section should contain a list of implemented features and their descriptions. In the end of the section, include two or three screenshots that illustrate the most important features.
-- **Dynamic Arena**: The game arena changes in every level, offering new challenges.
+- **Dynamic Arena**: The game arena changes in every level, offering new challenges to the players.
 - **Enemies**: There are different types of Enemies, some stronger than others!
+- **Different Moving Strategies for enemies**: The enemies can be defined to move using the best strategy to create a more immersive game experience.
 - **Key and Door Mechanism**: Players must find keys scattered across the arena to unlock the exit door.
 - **Power-Ups**: Introducing power-ups that can temporarily enhance the player's abilities.
-- **Limited Visibility**: The player can only see the elements near himself.
-- **Gun for the player**: The player may shoot on the monsters. Monsters are killed after 2 shoots. But, ammunition is limited: You get 5 bullets for each key grabbed. If you don't have bullets, you have to run!
-- **Score System**: Points are awarded based on speed and the number of keys collected.
-- **Leaderboard**: The leaderboard is the interface where players can find the scores of the last players and compare their scores
+- **Limited Visibility**: The player can only see the elements near himself, on a 3x3 field.
+- **Gun for the player**: The player may shoot on the monsters. Monsters are killed after 2 shoots. But, ammunition is limited: You get 5 bullets for each key grabbed. If you don't have bullets, you have to run! The bullets follow the direction of the last movement of the player.
+- **Score System**: Points are awarded based on speed and the final level reached.
+- **Leaderboard**: The leaderboard is the interface where players can find the scores of the last players and compare their scores.
 - **Username Form**: The users can register their name associated with the score, due to the collection of the name before game start. 
 
 
-Here are some screenshots of the game functionalities as of 9/12:
+Here are some screenshots of the game functionalities:
 
 ![Main State](home.png)
 ![Instructions](instructions.png)
@@ -72,19 +78,28 @@ We wanted to store the score of previous players to allow comparison. While we c
 
 **Pattern**
 
-![Leaderboard](history_leaderboard_uml.jpg)
+The implementation of the leaderboard history led us to the use of the Command Pattern and the Singleton Pattern.
 
-The implementation of the leaderboard history led us to the use of the Command Pattern.
+We decided on the use of the Command Pattern as we required a logging mechanism that would store the wins and losses of the players.
+This choice was based on the fact that this Pattern was actively designed for this purpose.
 
-This way, we decided that Level will have a History object, that will store the list of events
-that happened in the game, such as losses and wins. These losses and wins inherit methods and attributes 
-from the class "Event".
-
-Additionally, the History Class shouldn't be instantiated more than once, so we will implement the
-Singleton Pattern to it. 
+We also decided to use the Singleton Pattern to guarantee that there is only one instance with the current data and 
+there are no more than one object of History, which could cause conflicts when saving information to files and inconsistency 
+of data.
 
 
 **Implementation**
+
+![Leaderboard](history_leaderboard_uml.jpg)
+*Note: We left the right side of the arrow with no class to demonstrate that history can be depended from any
+place on the game. In our case, we use it from the LevelController and PreLevelController.*
+
+
+
+This way, we decided that LevelController and PreLevelController would depend on the History object, that will store the list of events
+that happened in the game, such as losses and wins. These losses and wins are each one classes that inherit methods and attributes
+from the class "Event".
+
 
 Using these patterns, we can use code similar to:
 ```
@@ -93,14 +108,16 @@ history.push(new Win('Name', 70, 3) // Name of Player, Time playing in seconds, 
 ```
 anywhere in the code.
 
-*The specifics of the code are subject to change.*
-
+Files [History.java](../src/main/java/com/l02gr01/escape/model/history/History.java), [HistoryLoader.java](../src/main/java/com/l02gr01/escape/model/history/HistoryLoader.java)
 
 **Consequences**
 
 Using these patterns, allows easy inclusion of new events on any part of the code and listing of the history saved.
 This also guarantees the efficiency of code, as we know that for each load of the game, it will only run once the load of data 
 from the memory file (at HistoryLoader.java).
+
+This organization also means a more structured approach to the logging mechanism at our game, guaranteeing expandability if
+we ever think in creating a different event to log, as for example, the entrance in a door.
 
 ---
 
@@ -131,6 +148,7 @@ Files: [State.java](../src/main/java/com/l02gr01/escape/states/State.java), [Men
 Using State Pattern, it becomes easy to change states during the game and behaviour is easily updated by this change.
 
 
+
 ### Game Loop
 
 **Problem in Context**
@@ -159,11 +177,11 @@ that may use our game.
 
 **Problem in Context**
 
-We wanted to guarantee that different enemies had different moving strategies according to the logic on each place.
+We wanted to guarantee that different enemies had different moving strategies according to the logic on each place. This guarantees that the game is more exciting 
+for the players.
 
 **The Pattern**
 
-![Moving Strategy](moving_strategy_uml.jpeg)
 
 For this, we used the Strategy Pattern. This means that we can decide the moving strategy of each enemy without having to
 create a lot of different classes for each enemy moving strategy. And, facilitates the management of enemies in the Controller 
@@ -171,9 +189,13 @@ and Viewer part.
 
 **Implementation**
 
-This feature will be implemented as depicted in the UML. There will exist a MovingStrategy abstract class that will
-have a method moveEnemy. Then, some method strategies will inherit this class. 
-The Enemy will have a MovingStrategy associated.
+![Moving Strategy](moving_strategy_uml.jpeg)
+
+This feature was implemented as depicted in the UML. There exists a MovingStrategy abstract class that
+has a method moveEnemy. Then, some method strategies inherit from this class, such as the RandomMovingStrategy, the HorizontalMovingStrategy,...
+
+
+The Enemy has a MovingStrategy associated. This moving strategy is then used by the Controller to model the behaviour of the enemy.
 
 Files: [MovingStrategy.java](../src/main/java/com/l02gr01/escape/model/elements/enemies/MovingStrategy/MovingStrategy.java), [HorizontalMovingStrategy.java](../src/main/java/com/l02gr01/escape/model/elements/enemies/MovingStrategy/HorizontalMovingStrategy.java), [RandomMovingStrategy.java](../src/main/java/com/l02gr01/escape/model/elements/enemies/MovingStrategy/RandomMovingStrategy.java)
 
@@ -189,19 +211,22 @@ movement for enemies.
 
 **Problem in Context**
 
-We wanted to receive the name of the player before game start. 
+We wanted to receive the name of the player before game start to associate it with the score received. 
 However, we didn't want to create a form using the lanterna given methods. Therefore, we were dependent
 of reading the characters pressed on the keyboard.
 
 **The Pattern**
 
-![Reading Text](username_read_uml.jpg)
-
 To implement this functionality, we decided to use a modification of the Observer Pattern.
+This pattern is especially useful, because we wanted to pass the information from the GUI to the Model logic and this made that process extremely easy.
+
 We also used the singleton pattern.
+
 The other options we were considering required a lot of code for single use.
 
 **Implementation**
+
+![Reading Text](username_read_uml.jpg)
 
 We are receiving the keyboard characters at the Lanterna GUI and sending them to TextManipulation, a class that implements the singleton pattern.
 If there is some place in the game that has signaled interest in reading text, it stores it in a class variable.
@@ -227,11 +252,12 @@ Additionally, we didn't want a song to play at the same time as another song, so
 
 **The Pattern**
 
-![AudioManager](audiomanager_uml.jpg)
 
 Therefore, to comply with this requirement, we decided to use the Singleton pattern on the AudioManager class.
 
 **Implementation**
+
+![AudioManager](audiomanager_uml.jpg)
 
 We implemented a getInstance method as static, which creates the object on demand (stored in a static variable) and returns always the same instance.
 
@@ -239,7 +265,7 @@ Files: [AudioManager.java](../src/main/java/com/l02gr01/escape/audio/AudioManage
 
 **Consequences**
 
-The pattern we use, guarantees the uniqueness of a AudioManager object. This leads to easier audio management and, the fact 
+The pattern we use guarantees the uniqueness of a AudioManager object. This leads to easier audio management and, the fact 
 that the object is not initialized on start of the game, can also contribute to save some memory space in case we decided that the audio was not needed.
 
 
@@ -258,7 +284,7 @@ However, there are still some code smells.
 
 - Large "Level" Class: The Game level class has grown too large and might benefit from decomposition.
 - The Enemy class is storing information about the model and the view, which affects the model-view-controller separation. However, the other alternatives (move the color logic to the viewer or create class for each enemy) forced the use of too many conditionals or would lead to an explosion of classes (i.e. severe increase in the number of classes with just a constructor).
-
+- The Powers classes are storing information about the view, which also affects the model-view-controller segregation.
 
 ### TESTING
 
@@ -291,6 +317,8 @@ The result of the game design is credit of Gonçalo and Ricardo Morais.
 
 Filipe Correia overviewed the code design and wrote the README files.
 
+
+We believe the work was divided in a equilibrated way.
 - Filipe Correia: %
 - Gonçalo Remelhe: %
 - Ricardo Morais: %
