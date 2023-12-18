@@ -286,7 +286,7 @@ The initial UML structure was designed by Filipe Correia and transformed to a di
 Filipe Correia and Ricardo Morais developed initial structure of the code and some initial functionalities. 
 Gonçalo Remelhe developed the code related with Instructions and tests.
 
-After the first delivery, the work was divided in a equilibrated way.
+After the first delivery, the work was divided in an equilibrated way.
 The result of the game design is credit of Gonçalo and Ricardo Morais.
 
 Filipe Correia overviewed the code design and wrote the README files.

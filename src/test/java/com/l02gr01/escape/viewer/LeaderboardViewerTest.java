@@ -4,6 +4,8 @@ import com.l02gr01.escape.gui.GUI;
 import com.l02gr01.escape.model.Leaderboard;
 import com.l02gr01.escape.model.Position;
 import com.l02gr01.escape.model.history.event.Event;
+import com.l02gr01.escape.model.history.event.Loss;
+import com.l02gr01.escape.model.history.event.Win;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
@@ -23,13 +25,13 @@ class LeaderboardViewerTest {
         Leaderboard leaderboard = Mockito.mock(Leaderboard.class);
         LeaderboardViewer leaderboardViewer = new LeaderboardViewer(leaderboard);
         List<Event> events = new ArrayList<>();
-        events.add(new Event("User1", 4000, 1) {
+        events.add(new Win("User1", 4000, 4) {
             @Override
             public String getInfo() {
                 return null;
             }
         });
-        events.add(new Event("User2", 8000, 2) {
+        events.add(new Loss("User2", 8000, 2) {
             @Override
             public String getInfo() {
                 return null;
@@ -48,8 +50,8 @@ class LeaderboardViewerTest {
 
         Mockito.verify(mockGUI).drawText(new Position(0, 5), "1.", "#03fbff");
         Mockito.verify(mockGUI).drawText(new Position(6, 5), "User1", "#FFFFFF");
-        Mockito.verify(mockGUI).drawText(new Position(17, 5), "1", "#FFFFFF");
-        Mockito.verify(mockGUI).drawText(new Position(25, 5), "44", "#FFFFFF");
+        Mockito.verify(mockGUI).drawText(new Position(17, 5), "4", "#FFFFFF");
+        Mockito.verify(mockGUI).drawText(new Position(25, 5), "219", "#FFFFFF");
 
         Mockito.verify(mockGUI).drawText(new Position(0, 6), "2.", "#03fbff");
         Mockito.verify(mockGUI).drawText(new Position(6, 6), "User2", "#FFFFFF");
